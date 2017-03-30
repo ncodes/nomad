@@ -7,6 +7,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/hashicorp/nomad/helper"
 	hargs "github.com/hashicorp/nomad/helper/args"
 	"github.com/hashicorp/nomad/nomad/structs"
 )
@@ -55,7 +56,7 @@ const (
 
 	// AddrPrefix is the prefix for passing both dynamic and static port
 	// allocations to tasks.
-	// E.g$NOMAD_ADDR_http=127.0.0.1:80
+	// E.g $NOMAD_ADDR_http=127.0.0.1:80
 	AddrPrefix = "NOMAD_ADDR_"
 
 	// IpPrefix is the prefix for passing the IP of a port allocation to a task.
@@ -217,16 +218,20 @@ func (t *TaskEnvironment) Build() *TaskEnvironment {
 				continue
 			}
 			for _, nw := range resources.Networks {
-				ports := make([]*structs.Port, 0, len(nw.ReservedPorts)+len(nw.DynamicPorts))
+				ports := make([]structs.Port, 0, len(nw.ReservedPorts)+len(nw.DynamicPorts))
 				for _, port := range nw.ReservedPorts {
-					ports = append(ports, &port)
+					ports = append(ports, port)
 				}
 				for _, port := range nw.DynamicPorts {
-					ports = append(ports, &port)
+					ports = append(ports, port)
 				}
 				for _, p := range ports {
 					key := fmt.Sprintf("%s%s_%s", AddrPrefix, taskName, p.Label)
 					t.TaskEnv[key] = fmt.Sprintf("%s:%d", nw.IP, p.Value)
+					key = fmt.Sprintf("%s%s_%s", IpPrefix, taskName, p.Label)
+					t.TaskEnv[key] = nw.IP
+					key = fmt.Sprintf("%s%s_%s", PortPrefix, taskName, p.Label)
+					t.TaskEnv[key] = strconv.Itoa(p.Value)
 				}
 			}
 		}
@@ -270,7 +275,7 @@ func (t *TaskEnvironment) Build() *TaskEnvironment {
 	// Clean keys (see #2405)
 	cleanedEnv := make(map[string]string, len(t.TaskEnv))
 	for k, v := range t.TaskEnv {
-		cleanedK := strings.Replace(k, "-", "_", -1)
+		cleanedK := helper.CleanEnvVar(k, '_')
 		cleanedEnv[cleanedK] = v
 	}
 	t.TaskEnv = cleanedEnv
@@ -292,6 +297,20 @@ func (t *TaskEnvironment) EnvList() []string {
 func (t *TaskEnvironment) EnvMap() map[string]string {
 	m := make(map[string]string, len(t.TaskEnv))
 	for k, v := range t.TaskEnv {
+		m[k] = v
+	}
+
+	return m
+}
+
+// EnvMapAll returns the environment variables that will be set as well as node
+// meta/attrs in the map. This is appropriate for interpolation.
+func (t *TaskEnvironment) EnvMapAll() map[string]string {
+	m := make(map[string]string, len(t.TaskEnv))
+	for k, v := range t.TaskEnv {
+		m[k] = v
+	}
+	for k, v := range t.NodeValues {
 		m[k] = v
 	}
 

@@ -81,8 +81,16 @@ environment variables.
     <td>The IP:Port pair of the port with the given label</td>
   </tr>
   <tr>
-    <td>`NOMAD_ADDR_<task>_<label`></td>
+    <td>`NOMAD_ADDR_<task>_<label>`</td>
     <td>The allocated address, given as IP:Port for the given label of other tasks in the same group</td>
+  </tr>
+  <tr>
+    <td>`NOMAD_PORT_<task>_<label>`</td>
+    <td>The allocated port for the given label of other tasks in the same group</td>
+  </tr>
+  <tr>
+    <td>`NOMAD_IP_<task>_<label>`</td>
+    <td>The allocated IP address for the given label of other tasks in the same group</td>
   </tr>
   <tr>
     <td>`NOMAD_HOST_PORT_<label>`</td>
@@ -98,9 +106,9 @@ environment variables.
   </tr>
 </table>
 
-~> Port labels and task names will have any dashes `-` in their names replaced by
-underscores `_` when they're used in environment variable names such as
-`NOMAD_ADDR_<task>_<label>`.
+~> Port labels and task names will have any non-alphanumeric or underscore
+characters in their names replaced by underscores `_` when they're used in
+environment variable names such as `NOMAD_ADDR_<task>_<label>`.
 
 ## Task Identifiers
 

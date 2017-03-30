@@ -40,6 +40,7 @@ type InfoStat struct {
 	Mhz        float64  `json:"mhz"`
 	CacheSize  int32    `json:"cacheSize"`
 	Flags      []string `json:"flags"`
+	Microcode  string   `json:"microcode"`
 }
 
 type lastPercent struct {
@@ -170,7 +171,7 @@ func percentUsedFromLastCall(percpu bool) ([]float64, error) {
 	}
 
 	if lastTimes == nil {
-		return nil, fmt.Errorf("Error getting times for cpu percent. LastTimes was nil")
+		return nil, fmt.Errorf("error getting times for cpu percent. lastTimes was nil")
 	}
 	return calculateAllBusy(lastTimes, cpuTimes)
 }

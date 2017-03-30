@@ -1,12 +1,7 @@
 //= require turbolinks
 //= require jquery
-//= require bootstrap
 
-//= require lib/_jquery.waypoints
-//= require lib/_String.substitute
-//= require lib/_Function.prototype.bind
-//= require lib/_Base
+//= require hashicorp/mega-nav
+//= require hashicorp/sidebar
 
-//= require app/_Sidebar
-//= require app/_CubeDraw
-//= require app/_Init
+//= require _cubes

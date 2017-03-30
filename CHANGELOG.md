@@ -1,6 +1,27 @@
-## 0.5.5 (Unreleased)
+## 0.5.6 (Unreleased)
+
+IMPROVEMENTS:
+  * client: Improve error message when artifact downloading fails [GH-2289]
+  * client/template: Access Node meta and attributes in template [GH-2488]
+
+BUG FIXES:
+  * core: Fix periodic job state switching to dead incorrectly [GH-2486]
+  * core: Fix dispatch of periodic job launching allocations immediately
+    [GH-2489]
+  * api: Fix TLS in logs and fs commands/APIs [GH-2290]
+  * cli/plan: Fix diff alignment and remove no change DC output [GH-2465]
+  * client: Fix panic when restarting non-running tasks [GH-2480]
+  * client: Fix env vars when multiple tasks and ports present [GH-2491]
+  * client: Fix `user` attribute disregarding membership of non-main group
+    [GH-2461]
+  * client/vault: Stop Vault token renewal on task exit [GH-2495]
+  * driver/docker: Proper reference counting through task restarts [GH-2484]
+
+## 0.5.5 (March 14, 2017)
 
 __BACKWARDS INCOMPATIBILITIES:__
+  * api: The api package definition of a Job has changed from exposing
+    primitives to pointers to primitives to allow defaulting of unset fields.
   * driver/docker: The `load` configuration took an array of paths to images
     prior to this release. A single image is expected by the driver so this
     behavior has been changed to take a single path as a string. Jobs using the
@@ -17,8 +38,13 @@ IMPROVEMENTS:
   * cli: node-status displays enabled drivers on the node [GH-2349]
   * client: Apply GC related configurations properly [GH-2273]
   * client: Don't force uppercase meta keys in env vars [GH-2338]
+  * client: Limit parallelism during garbage collection [GH-2427]
   * client: Don't exec `uname -r` for node attribute kernel.version [GH-2380]
   * client: Artifact support for git and hg as well as netrc support [GH-2386]
+  * client: Add metrics to show number of allocations on in each state [GH-2425]
+  * client: Add `NOMAD_{IP,PORT}_<task>_<label>` environment variables [GH-2426]
+  * client: Allow specification of `cpu_total_compute` to override fingerprinter
+    [GH-2447]
   * client: Reproducible Node ID on OSes that provide system-level UUID
     [GH-2277]
   * driver/docker: Add support for volume drivers [GH-2351]
@@ -26,6 +52,7 @@ IMPROVEMENTS:
   * jobspec: Add leader task to allow graceful shutdown of other tasks within
     the task group [GH-2308]
   * periodic: Allow specification of timezones in Periodic Jobs [GH-2321]
+  * scheduler: New `distinct_property` constraint [GH-2418]
   * server: Allow specification of eval/job gc threshold [GH-2370]
   * server/vault: Vault Client on Server handles SIGHUP to reload configs
     [GH-2270]
@@ -37,6 +64,7 @@ IMPROVEMENTS:
 
 BUG FIXES:
   * core: Handle periodic paramaterized jobs [GH-2385]
+  * core: Improve garbage collection of stopped batch jobs [GH-2432]
   * api: Fix escaping of HTML characters [GH-2322]
   * cli: Display disk resources in alloc-status [GH-2404]
   * client: Drivers log during fingerprinting [GH-2337]
@@ -47,7 +75,6 @@ BUG FIXES:
     fails [GH-2376] 
   * config: Fix Consul Config Merging/Copying [GH-2278]
   * config: Fix Client reserved resource merging panic [GH-2281]
-  * driver/docker: Fix Docker 1.13 on Windows [GH-2342]
   * server: Fix panic when forwarding Vault derivation requests from non-leader
     servers [GH-2267]
 

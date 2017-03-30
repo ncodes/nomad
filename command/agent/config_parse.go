@@ -336,6 +336,7 @@ func parseClient(result **ClientConfig, list *ast.ObjectList) error {
 		"chroot_env",
 		"network_interface",
 		"network_speed",
+		"cpu_total_compute",
 		"max_kill_timeout",
 		"client_max_port",
 		"client_min_port",
@@ -344,6 +345,7 @@ func parseClient(result **ClientConfig, list *ast.ObjectList) error {
 		"gc_interval",
 		"gc_disk_usage_threshold",
 		"gc_inode_usage_threshold",
+		"gc_parallel_destroys",
 		"no_host_uuid",
 	}
 	if err := checkHCLKeys(listVal, valid); err != nil {

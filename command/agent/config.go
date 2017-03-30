@@ -182,6 +182,9 @@ type ClientConfig struct {
 	// speed.
 	NetworkSpeed int `mapstructure:"network_speed"`
 
+	// CpuCompute is used to override any detected or default total CPU compute.
+	CpuCompute int `mapstructure:"cpu_total_compute"`
+
 	// MaxKillTimeout allows capping the user-specifiable KillTimeout.
 	MaxKillTimeout string `mapstructure:"max_kill_timeout"`
 
@@ -201,6 +204,10 @@ type ClientConfig struct {
 	// GCInterval is the time interval at which the client triggers garbage
 	// collection
 	GCInterval time.Duration `mapstructure:"gc_interval"`
+
+	// GCParallelDestroys is the number of parallel destroys the garbage
+	// collector will allow.
+	GCParallelDestroys int `mapstructure:"gc_parallel_destroys"`
 
 	// GCInodeUsageThreshold is the inode usage threshold beyond which the Nomad
 	// client triggers GC of the terminal allocations
@@ -524,6 +531,7 @@ func DefaultConfig() *Config {
 			ClientMaxPort:         14512,
 			Reserved:              &Resources{},
 			GCInterval:            1 * time.Minute,
+			GCParallelDestroys:    2,
 			GCInodeUsageThreshold: 70,
 			GCDiskUsageThreshold:  80,
 		},
@@ -911,6 +919,9 @@ func (a *ClientConfig) Merge(b *ClientConfig) *ClientConfig {
 	if b.NetworkSpeed != 0 {
 		result.NetworkSpeed = b.NetworkSpeed
 	}
+	if b.CpuCompute != 0 {
+		result.CpuCompute = b.CpuCompute
+	}
 	if b.MaxKillTimeout != "" {
 		result.MaxKillTimeout = b.MaxKillTimeout
 	}
@@ -928,6 +939,9 @@ func (a *ClientConfig) Merge(b *ClientConfig) *ClientConfig {
 	}
 	if b.GCInterval != 0 {
 		result.GCInterval = b.GCInterval
+	}
+	if b.GCParallelDestroys != 0 {
+		result.GCParallelDestroys = b.GCParallelDestroys
 	}
 	if b.GCDiskUsageThreshold != 0 {
 		result.GCDiskUsageThreshold = b.GCDiskUsageThreshold

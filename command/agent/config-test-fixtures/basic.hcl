@@ -39,6 +39,7 @@ client {
 	}
 	network_interface = "eth0"
 	network_speed = 100
+	cpu_total_compute = 4444
 	reserved {
 		cpu = 10
 		memory = 10
@@ -54,6 +55,7 @@ client {
         collection_interval = "5s"
     }
     gc_interval = "6s"
+    gc_parallel_destroys = 6
     gc_disk_usage_threshold = 82
     gc_inode_usage_threshold = 91
     no_host_uuid = true

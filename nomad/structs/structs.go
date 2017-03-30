@@ -2270,7 +2270,7 @@ func (s *Service) ValidateName(name string) error {
 	// (https://tools.ietf.org/html/rfc2782).
 	re := regexp.MustCompile(`^(?i:[a-z0-9]|[a-z0-9][a-z0-9\-]{0,61}[a-z0-9])$`)
 	if !re.MatchString(name) {
-		return fmt.Errorf("service name must be valid per RFC 1123 and can contain only alphanumeric characters or dashes and must be less than 63 characters long: %q", name)
+		return fmt.Errorf("service name must be valid per RFC 1123 and can contain only alphanumeric characters or dashes and must be no longer than 63 characters: %q", name)
 	}
 	return nil
 }
@@ -2516,6 +2516,12 @@ func (t *Task) Validate(ephemeralDisk *EphemeralDisk) error {
 	for idx, constr := range t.Constraints {
 		if err := constr.Validate(); err != nil {
 			outer := fmt.Errorf("Constraint %d validation failed: %s", idx+1, err)
+			mErr.Errors = append(mErr.Errors, outer)
+		}
+
+		switch constr.Operand {
+		case ConstraintDistinctHosts, ConstraintDistinctProperty:
+			outer := fmt.Errorf("Constraint %d has disallowed Operand at task level: %s", idx+1, constr.Operand)
 			mErr.Errors = append(mErr.Errors, outer)
 		}
 	}
@@ -3192,10 +3198,11 @@ func (ta *TaskArtifact) Validate() error {
 }
 
 const (
-	ConstraintDistinctHosts = "distinct_hosts"
-	ConstraintRegex         = "regexp"
-	ConstraintVersion       = "version"
-	ConstraintSetContains   = "set_contains"
+	ConstraintDistinctProperty = "distinct_property"
+	ConstraintDistinctHosts    = "distinct_hosts"
+	ConstraintRegex            = "regexp"
+	ConstraintVersion          = "version"
+	ConstraintSetContains      = "set_contains"
 )
 
 // Constraints are used to restrict placement options.
@@ -3830,14 +3837,14 @@ type Evaluation struct {
 	// during the evaluation. This should not be set during normal operations.
 	AnnotatePlan bool
 
+	// QueuedAllocations is the number of unplaced allocations at the time the
+	// evaluation was processed. The map is keyed by Task Group names.
+	QueuedAllocations map[string]int
+
 	// SnapshotIndex is the Raft index of the snapshot used to process the
 	// evaluation. As such it will only be set once it has gone through the
 	// scheduler.
 	SnapshotIndex uint64
-
-	// QueuedAllocations is the number of unplaced allocations at the time the
-	// evaluation was processed. The map is keyed by Task Group names.
-	QueuedAllocations map[string]int
 
 	// Raft Indexes
 	CreateIndex uint64
@@ -4189,15 +4196,33 @@ func NewRecoverableError(e error, recoverable bool) error {
 	}
 }
 
+// WrapRecoverable wraps an existing error in a new RecoverableError with a new
+// message. If the error was recoverable before the returned error is as well;
+// otherwise it is unrecoverable.
+func WrapRecoverable(msg string, err error) error {
+	return &RecoverableError{Err: msg, Recoverable: IsRecoverable(err)}
+}
+
 func (r *RecoverableError) Error() string {
 	return r.Err
+}
+
+func (r *RecoverableError) IsRecoverable() bool {
+	return r.Recoverable
+}
+
+// Recoverable is an interface for errors to implement to indicate whether or
+// not they are fatal or recoverable.
+type Recoverable interface {
+	error
+	IsRecoverable() bool
 }
 
 // IsRecoverable returns true if error is a RecoverableError with
 // Recoverable=true. Otherwise false is returned.
 func IsRecoverable(e error) bool {
-	if re, ok := e.(*RecoverableError); ok {
-		return re.Recoverable
+	if re, ok := e.(Recoverable); ok {
+		return re.IsRecoverable()
 	}
 	return false
 }
