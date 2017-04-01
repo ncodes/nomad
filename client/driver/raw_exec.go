@@ -8,7 +8,6 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/ellcrys/util"
 	"github.com/hashicorp/go-plugin"
 	"github.com/hashicorp/nomad/client/config"
 	"github.com/hashicorp/nomad/client/driver/executor"
@@ -106,8 +105,6 @@ func (d *RawExecDriver) Prestart(*ExecContext, *structs.Task) (*CreatedResources
 }
 
 func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandle, error) {
-	fmt.Println("Started It Here")
-	util.Printify(task)
 	var driverConfig ExecDriverConfig
 	if err := mapstructure.WeakDecode(task.Config, &driverConfig); err != nil {
 		return nil, err
