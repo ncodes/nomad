@@ -262,6 +262,11 @@ func (h *rawExecHandle) Signal(s os.Signal) error {
 }
 
 func (h *rawExecHandle) Kill() error {
+
+	time.AfterFunc(h.killTimeout+5, func() {
+		h.stopContainer()
+	})
+
 	if err := h.executor.ShutDown(); err != nil {
 		if h.pluginClient.Exited() {
 			return nil
@@ -271,9 +276,6 @@ func (h *rawExecHandle) Kill() error {
 
 	select {
 	case <-h.doneCh:
-		if err := h.stopContainer(); err != nil {
-			return err
-		}
 		return nil
 	case <-time.After(h.killTimeout):
 		if h.pluginClient.Exited() {
@@ -281,12 +283,6 @@ func (h *rawExecHandle) Kill() error {
 		}
 		if err := h.executor.Exit(); err != nil {
 			return fmt.Errorf("executor Exit failed: %v", err)
-		}
-
-		time.Sleep(5 * time.Second)
-
-		if err := h.stopContainer(); err != nil {
-			return err
 		}
 
 		return nil
