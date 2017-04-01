@@ -276,15 +276,15 @@ func (h *rawExecHandle) Kill() error {
 		}
 		return nil
 	case <-time.After(h.killTimeout):
-
-		if err := h.stopContainer(); err != nil {
-			return err
-		}
 		if h.pluginClient.Exited() {
 			return nil
 		}
 		if err := h.executor.Exit(); err != nil {
 			return fmt.Errorf("executor Exit failed: %v", err)
+		}
+
+		if err := h.stopContainer(); err != nil {
+			return err
 		}
 
 		return nil
