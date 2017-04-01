@@ -177,7 +177,7 @@ func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandl
 }
 
 func (d *RawExecDriver) Cleanup(execCtx *ExecContext, cr *CreatedResources) error {
-	return nil
+	return stopContainer(d.taskEnv.Env["CONTAINER_ID"])
 }
 
 type rawExecId struct {
@@ -265,7 +265,6 @@ func (h *rawExecHandle) Kill() error {
 
 	if err := h.executor.ShutDown(); err != nil {
 		if h.pluginClient.Exited() {
-			h.stopContainer()
 			return nil
 		}
 		return fmt.Errorf("executor Shutdown failed: %v", err)
@@ -273,38 +272,36 @@ func (h *rawExecHandle) Kill() error {
 
 	select {
 	case <-h.doneCh:
-		h.stopContainer()
 		return nil
 	case <-time.After(h.killTimeout):
 		if h.pluginClient.Exited() {
-			h.stopContainer()
 			return nil
 		}
 		if err := h.executor.Exit(); err != nil {
 			return fmt.Errorf("executor Exit failed: %v", err)
 		}
 
-		time.AfterFunc(30*time.Second, func() {
-			h.stopContainer()
-		})
-
 		return nil
 	}
 }
 
 // Delete any docker image with a matching id as the `CONTAINER_ID` in the TaskEnv
-func (h *rawExecHandle) stopContainer() error {
-	h.logger.Printf("[DEBUG] driver.raw_exec: Attempting to stop associated container")
-	if containerID, ok := h.execCtx.TaskEnv.Env["CONTAINER_ID"]; ok && len(containerID) > 0 {
-		err := tools.DeleteContainer(containerID, false, false, false)
-		if err != nil {
-			if err == tools.ErrContainerNotFound {
-				h.logger.Printf("[DEBUG] driver.raw_exec: Container does not exists")
-				return nil
-			}
-			return fmt.Errorf("failed to delete container attached to task (alloc id: %s)", h.execCtx.AllocID)
-		}
+func stopContainer(containerID string) error {
+	if containerID == "" {
+		return fmt.Errorf("Container id is required")
 	}
+
+	h.logger.Printf("[DEBUG] driver.raw_exec: Attempting to stop associated container")
+
+	err := tools.DeleteContainer(containerID, false, false, false)
+	if err != nil {
+		if err == tools.ErrContainerNotFound {
+			h.logger.Printf("[DEBUG] driver.raw_exec: Container does not exists")
+			return nil
+		}
+		return fmt.Errorf("failed to delete container attached to task (alloc id: %s)", h.execCtx.AllocID)
+	}
+
 	h.logger.Printf("[DEBUG] driver.raw_exec: Successfully stopped container")
 	return nil
 }
