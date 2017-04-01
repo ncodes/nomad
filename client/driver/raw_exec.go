@@ -263,12 +263,9 @@ func (h *rawExecHandle) Signal(s os.Signal) error {
 
 func (h *rawExecHandle) Kill() error {
 
-	time.AfterFunc(h.killTimeout+5, func() {
-		h.stopContainer()
-	})
-
 	if err := h.executor.ShutDown(); err != nil {
 		if h.pluginClient.Exited() {
+			h.stopContainer()
 			return nil
 		}
 		return fmt.Errorf("executor Shutdown failed: %v", err)
@@ -276,14 +273,20 @@ func (h *rawExecHandle) Kill() error {
 
 	select {
 	case <-h.doneCh:
+		h.stopContainer()
 		return nil
 	case <-time.After(h.killTimeout):
 		if h.pluginClient.Exited() {
+			h.stopContainer()
 			return nil
 		}
 		if err := h.executor.Exit(); err != nil {
 			return fmt.Errorf("executor Exit failed: %v", err)
 		}
+
+		time.AfterFunc(30*time.Second, func() {
+			h.stopContainer()
+		})
 
 		return nil
 	}
