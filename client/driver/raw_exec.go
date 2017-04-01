@@ -107,6 +107,8 @@ func (d *RawExecDriver) Prestart(*ExecContext, *structs.Task) (*CreatedResources
 
 func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandle, error) {
 
+	pretty.Println(d.taskEnv)
+
 	var driverConfig ExecDriverConfig
 	if err := mapstructure.WeakDecode(task.Config, &driverConfig); err != nil {
 		return nil, err
@@ -174,7 +176,6 @@ func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandl
 }
 
 func (d *RawExecDriver) Cleanup(execCtx *ExecContext, cr *CreatedResources) error {
-	pretty.Println(d.taskEnv)
 	return nil
 }
 
