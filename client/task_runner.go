@@ -1192,8 +1192,6 @@ func (r *TaskRunner) startTask() error {
 			r.task.Name, r.alloc.ID, err)
 	}
 
-	panic("Hereuuyyyyyyyyyyyyy˝˝")
-
 	// Run prestart
 	ctx := driver.NewExecContext(r.taskDir)
 	res, err := drv.Prestart(ctx, r.task)
