@@ -998,8 +998,10 @@
 			"revision": "eecf4c70c626c7cfbb95c90195bc34d386c74ac6"
 		},
 		{
+			"checksumSHA1": "z9uUyLka7TF7pCl5tZ43vvPFwQc=",
 			"path": "github.com/ncodes/cocoon/tools",
-			"revision": ""
+			"revision": "fe18640cf6be15f56fe68508ee0d323cc56fbaec",
+			"revisionTime": "2017-04-01T17:50:29Z"
 		},
 		{
 			"checksumSHA1": "NvdeR1JUZoYXH2M31nzIGyfbfUY=",
