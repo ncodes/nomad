@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-plugin"
+	"github.com/kr/pretty"
 	"github.com/mitchellh/mapstructure"
 	"github.com/ncodes/cocoon/tools"
 	"github.com/ncodes/nomad/client/config"
@@ -174,6 +175,8 @@ func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandl
 }
 
 func (d *RawExecDriver) Cleanup(execCtx *ExecContext, cr *CreatedResources) error {
+
+	pretty.Println(d.taskEnv.TaskEnv, d.taskEnv.TaskEnv["CONTAINER_ID"])
 
 	// Delete any docker image with a matching id as the `CONTAINER_ID` in the TaskEnv
 	if containerID, ok := d.taskEnv.TaskEnv["CONTAINER_ID"]; ok && len(containerID) > 0 {
