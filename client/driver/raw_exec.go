@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-plugin"
-	"github.com/kr/pretty"
 	"github.com/mitchellh/mapstructure"
+	"github.com/ncodes/cocoon/tools"
 	"github.com/ncodes/nomad/client/config"
 	"github.com/ncodes/nomad/client/driver/executor"
 	dstructs "github.com/ncodes/nomad/client/driver/structs"
@@ -174,7 +174,14 @@ func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandl
 }
 
 func (d *RawExecDriver) Cleanup(execCtx *ExecContext, cr *CreatedResources) error {
-	pretty.Println(d.taskEnv)
+
+	// Delete any docker image with a matching id as the `CONTAINER_ID` in the TaskEnv
+	if containerID, ok := d.taskEnv.TaskEnv["CONTAINER_ID"]; ok && len(containerID) > 0 {
+		if err := tools.DeleteContainer(containerID, false, false, false); err != nil {
+			return fmt.Errorf("failed to delete container attached to task (alloc id: %s)", d.taskEnv.AllocId)
+		}
+	}
+
 	return nil
 }
 
