@@ -283,7 +283,7 @@ func (h *rawExecHandle) Kill() error {
 			return fmt.Errorf("executor Exit failed: %v", err)
 		}
 
-		time.Sleep(2 * time.Second)
+		time.Sleep(5 * time.Second)
 
 		if err := h.stopContainer(); err != nil {
 			return err
