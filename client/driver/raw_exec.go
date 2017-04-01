@@ -8,6 +8,7 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/ellcrys/util"
 	"github.com/hashicorp/go-plugin"
 	"github.com/hashicorp/nomad/client/config"
 	"github.com/hashicorp/nomad/client/driver/executor"
@@ -171,7 +172,11 @@ func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandl
 	return h, nil
 }
 
-func (d *RawExecDriver) Cleanup(*ExecContext, *CreatedResources) error { return nil }
+func (d *RawExecDriver) Cleanup(*ExecContext, *CreatedResources) error {
+	d.logger.Println("CLEAN UP!!!!!!")
+	util.Printify(d.taskEnv)
+	return nil
+}
 
 type rawExecId struct {
 	Version        string
