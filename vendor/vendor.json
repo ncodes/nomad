@@ -1002,6 +1002,12 @@
 			"revision": ""
 		},
 		{
+			"checksumSHA1": "NvdeR1JUZoYXH2M31nzIGyfbfUY=",
+			"path": "github.com/ncodes/go-dockerclient",
+			"revision": "f3718aa8ef19b3ba11d3a665e4f9b7a2d2ad7d24",
+			"revisionTime": "2017-02-24T09:39:29Z"
+		},
+		{
 			"checksumSHA1": "LmfSFpWmQkhzi51NerpH7UvOrbc=",
 			"path": "github.com/ncodes/go-spin",
 			"revision": "ddabc69b6151945c05fc40e2ae3f2fc9396b77a2",
