@@ -51,7 +51,6 @@ type rawExecHandle struct {
 
 // NewRawExecDriver is used to create a new raw exec driver
 func NewRawExecDriver(ctx *DriverContext) Driver {
-	panic("Got you!")
 	return &RawExecDriver{DriverContext: *ctx}
 }
 
