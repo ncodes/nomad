@@ -295,7 +295,11 @@ func (h *rawExecHandle) Kill() error {
 func (h *rawExecHandle) stopContainer() error {
 	h.logger.Printf("[DEBUG] driver.raw_exec: Attempting to stop associated container")
 	if containerID, ok := h.execCtx.TaskEnv.Env["CONTAINER_ID"]; ok && len(containerID) > 0 {
-		if err := tools.DeleteContainer(containerID, false, false, false); err != nil {
+		err := tools.DeleteContainer(containerID, false, false, false)
+		if err != nil {
+			if err == tools.ErrContainerNotFound {
+				return nil
+			}
 			return fmt.Errorf("failed to delete container attached to task (alloc id: %s)", h.execCtx.AllocID)
 		}
 	}
