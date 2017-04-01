@@ -13,6 +13,7 @@ func init() {
 }
 
 func main() {
+	fmt.Println("Hello")
 	os.Exit(Run(os.Args[1:]))
 }
 
