@@ -8,7 +8,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/ellcrys/util"
 	"github.com/hashicorp/go-plugin"
+	"github.com/mitchellh/mapstructure"
 	"github.com/ncodes/nomad/client/config"
 	"github.com/ncodes/nomad/client/driver/executor"
 	dstructs "github.com/ncodes/nomad/client/driver/structs"
@@ -16,7 +18,6 @@ import (
 	cstructs "github.com/ncodes/nomad/client/structs"
 	"github.com/ncodes/nomad/helper/fields"
 	"github.com/ncodes/nomad/nomad/structs"
-	"github.com/mitchellh/mapstructure"
 )
 
 const (
@@ -105,6 +106,8 @@ func (d *RawExecDriver) Prestart(*ExecContext, *structs.Task) (*CreatedResources
 }
 
 func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandle, error) {
+
+	util.Println(task)
 	var driverConfig ExecDriverConfig
 	if err := mapstructure.WeakDecode(task.Config, &driverConfig); err != nil {
 		return nil, err
