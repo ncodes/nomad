@@ -877,7 +877,7 @@ func (r *TaskRunner) postrun() {
 		r.templateManager.Stop()
 	}
 
-	r.logger.Println("Post run")
+	r.logger.Println("[DEBUG] >> Post run")
 }
 
 // run is the main run loop that handles starting the application, destroying
@@ -1065,7 +1065,7 @@ func (r *TaskRunner) run() {
 
 // cleanup calls Driver.Cleanup when a task is stopping. Errors are logged.
 func (r *TaskRunner) cleanup() {
-	r.logger.Println("In clean up")
+	r.logger.Println("[DEBUG] >> In clean up")
 	drv, err := r.createDriver()
 	if err != nil {
 		r.logger.Printf("[ERR] client: error creating driver to cleanup resources: %v", err)
