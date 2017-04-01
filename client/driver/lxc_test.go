@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/testutil"
 	lxc "gopkg.in/lxc/go-lxc.v2"
 )
 

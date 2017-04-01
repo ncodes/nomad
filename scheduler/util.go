@@ -7,7 +7,7 @@ import (
 	"reflect"
 
 	memdb "github.com/hashicorp/go-memdb"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // allocTuple is a tuple of the allocation name and potential alloc ID

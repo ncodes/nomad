@@ -4,7 +4,7 @@ import (
 	"os"
 	"sync"
 
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
 	cgroupConfig "github.com/opencontainers/runc/libcontainer/configs"
 )
 

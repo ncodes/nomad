@@ -8,8 +8,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 const (
@@ -301,7 +301,7 @@ func TestEnvironment_AppendHostEnvvars(t *testing.T) {
 
 // TestEnvironment_DashesInTaskName asserts dashes in port labels are properly
 // converted to underscores in environment variables.
-// See: https://github.com/hashicorp/nomad/issues/2405
+// See: https://github.com/ncodes/nomad/issues/2405
 func TestEnvironment_DashesInTaskName(t *testing.T) {
 	env := testTaskEnvironment()
 	env.SetNetworks([]*structs.NetworkResource{

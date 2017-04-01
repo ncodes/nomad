@@ -9,8 +9,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/nomad"
-	sconfig "github.com/hashicorp/nomad/nomad/structs/config"
+	"github.com/ncodes/nomad/nomad"
+	sconfig "github.com/ncodes/nomad/nomad/structs/config"
 )
 
 func getPort() int {

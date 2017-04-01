@@ -9,12 +9,12 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-multierror"
-	"github.com/hashicorp/nomad/client/allocdir"
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/client/vaultclient"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/allocdir"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/client/vaultclient"
+	"github.com/ncodes/nomad/nomad/structs"
 
-	cstructs "github.com/hashicorp/nomad/client/structs"
+	cstructs "github.com/ncodes/nomad/client/structs"
 )
 
 const (

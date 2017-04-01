@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/hashicorp/nomad/helper/flatmap"
+	"github.com/ncodes/nomad/helper/flatmap"
 	"github.com/mitchellh/hashstructure"
 )
 

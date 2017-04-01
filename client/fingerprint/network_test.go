@@ -6,8 +6,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // Set skipOnlineTestEnvVar to a non-empty value to skip network tests.  Useful

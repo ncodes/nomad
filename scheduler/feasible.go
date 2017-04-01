@@ -8,7 +8,7 @@ import (
 	"strings"
 
 	"github.com/hashicorp/go-version"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // FeasibleIterator is used to iteratively yield nodes that

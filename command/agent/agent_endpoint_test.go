@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 func TestHTTP_AgentSelf(t *testing.T) {

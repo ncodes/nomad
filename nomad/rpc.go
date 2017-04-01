@@ -14,8 +14,8 @@ import (
 	"github.com/hashicorp/consul/lib"
 	memdb "github.com/hashicorp/go-memdb"
 	"github.com/hashicorp/net-rpc-msgpackrpc"
-	"github.com/hashicorp/nomad/nomad/state"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/state"
+	"github.com/ncodes/nomad/nomad/structs"
 	"github.com/hashicorp/raft"
 	"github.com/hashicorp/yamux"
 )

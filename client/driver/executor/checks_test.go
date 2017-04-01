@@ -9,7 +9,7 @@ import (
 
 	docker "github.com/fsouza/go-dockerclient"
 
-	"github.com/hashicorp/nomad/client/testutil"
+	"github.com/ncodes/nomad/client/testutil"
 )
 
 func TestExecScriptCheckNoIsolation(t *testing.T) {

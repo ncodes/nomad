@@ -10,7 +10,7 @@ import (
 
 	"github.com/armon/circbuf"
 	docker "github.com/fsouza/go-dockerclient"
-	cstructs "github.com/hashicorp/nomad/client/driver/structs"
+	cstructs "github.com/ncodes/nomad/client/driver/structs"
 )
 
 var (

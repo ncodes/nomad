@@ -9,9 +9,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/command/agent/consul"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/command/agent/consul"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/testutil"
 )
 
 var (

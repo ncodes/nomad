@@ -16,9 +16,9 @@ import (
 	cgroupFs "github.com/opencontainers/runc/libcontainer/cgroups/fs"
 	cgroupConfig "github.com/opencontainers/runc/libcontainer/configs"
 
-	"github.com/hashicorp/nomad/client/stats"
-	cstructs "github.com/hashicorp/nomad/client/structs"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/stats"
+	cstructs "github.com/ncodes/nomad/client/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 var (

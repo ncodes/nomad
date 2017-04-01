@@ -14,9 +14,9 @@ import (
 	"github.com/hashicorp/go-multierror"
 	"github.com/hashicorp/hcl"
 	"github.com/hashicorp/hcl/hcl/ast"
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/nomad/structs"
 	"github.com/mitchellh/mapstructure"
 )
 

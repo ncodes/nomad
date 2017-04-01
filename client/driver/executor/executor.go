@@ -19,17 +19,17 @@ import (
 	"github.com/mitchellh/go-ps"
 	"github.com/shirou/gopsutil/process"
 
-	"github.com/hashicorp/nomad/client/allocdir"
-	"github.com/hashicorp/nomad/client/driver/env"
-	"github.com/hashicorp/nomad/client/driver/logging"
-	"github.com/hashicorp/nomad/client/stats"
-	"github.com/hashicorp/nomad/command/agent/consul"
-	shelpers "github.com/hashicorp/nomad/helper/stats"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/nomad/structs/config"
+	"github.com/ncodes/nomad/client/allocdir"
+	"github.com/ncodes/nomad/client/driver/env"
+	"github.com/ncodes/nomad/client/driver/logging"
+	"github.com/ncodes/nomad/client/stats"
+	"github.com/ncodes/nomad/command/agent/consul"
+	shelpers "github.com/ncodes/nomad/helper/stats"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs/config"
 
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
-	cstructs "github.com/hashicorp/nomad/client/structs"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
+	cstructs "github.com/ncodes/nomad/client/structs"
 )
 
 const (

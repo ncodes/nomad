@@ -3,7 +3,7 @@ package nomad
 import (
 	"fmt"
 
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // System endpoint is used to call invoke system tasks.

@@ -13,9 +13,9 @@ import (
 
 	tomb "gopkg.in/tomb.v1"
 
-	cstructs "github.com/hashicorp/nomad/client/structs"
-	"github.com/hashicorp/nomad/client/testutil"
-	"github.com/hashicorp/nomad/nomad/structs"
+	cstructs "github.com/ncodes/nomad/client/structs"
+	"github.com/ncodes/nomad/client/testutil"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 var (

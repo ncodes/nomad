@@ -44,7 +44,7 @@ format:
 generate:
 	@echo "--> Running go generate"
 	@go generate $(PACKAGES)
-	@sed -i.old -e 's|github.com/hashicorp/nomad/vendor/github.com/ugorji/go/codec|github.com/ugorji/go/codec|' nomad/structs/structs.generated.go
+	@sed -i.old -e 's|github.com/ncodes/nomad/vendor/github.com/ugorji/go/codec|github.com/ugorji/go/codec|' nomad/structs/structs.generated.go
 
 vet:
 	@echo "--> Running go vet $(VETARGS) ${PACKAGES}"

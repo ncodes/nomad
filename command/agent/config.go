@@ -13,10 +13,10 @@ import (
 	"strings"
 	"time"
 
-	client "github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/nomad"
-	"github.com/hashicorp/nomad/nomad/structs/config"
+	client "github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/nomad"
+	"github.com/ncodes/nomad/nomad/structs/config"
 )
 
 // Config is the configuration for the Nomad agent.

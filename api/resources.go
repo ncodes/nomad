@@ -1,6 +1,6 @@
 package api
 
-import "github.com/hashicorp/nomad/helper"
+import "github.com/ncodes/nomad/helper"
 
 // Resources encapsulates the required resources of
 // a given task or task group.

@@ -6,7 +6,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/hashicorp/nomad/helper/tlsutil"
+	"github.com/ncodes/nomad/helper/tlsutil"
 	"github.com/hashicorp/raft"
 )
 

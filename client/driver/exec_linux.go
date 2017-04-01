@@ -1,9 +1,9 @@
 package driver
 
 import (
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/nomad/structs"
 	"golang.org/x/sys/unix"
 )
 

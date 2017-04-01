@@ -43,7 +43,7 @@ as a copy of [`git`](https://www.git-scm.com/) in your `PATH`.
 
     ```shell
     $ mkdir -p $GOPATH/src/github.com/hashicorp && cd $_
-    $ git clone https://github.com/hashicorp/nomad.git
+    $ git clone https://github.com/ncodes/nomad.git
     $ cd nomad
     ```
 

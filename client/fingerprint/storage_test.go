@@ -4,7 +4,7 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 func TestStorageFingerprint(t *testing.T) {

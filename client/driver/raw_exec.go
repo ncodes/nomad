@@ -9,13 +9,13 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-plugin"
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/client/driver/executor"
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
-	"github.com/hashicorp/nomad/client/fingerprint"
-	cstructs "github.com/hashicorp/nomad/client/structs"
-	"github.com/hashicorp/nomad/helper/fields"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/client/driver/executor"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
+	"github.com/ncodes/nomad/client/fingerprint"
+	cstructs "github.com/ncodes/nomad/client/structs"
+	"github.com/ncodes/nomad/helper/fields"
+	"github.com/ncodes/nomad/nomad/structs"
 	"github.com/mitchellh/mapstructure"
 )
 

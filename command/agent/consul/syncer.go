@@ -37,9 +37,9 @@ import (
 	consul "github.com/hashicorp/consul/api"
 	"github.com/hashicorp/go-multierror"
 
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/nomad/structs/config"
-	"github.com/hashicorp/nomad/nomad/types"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs/config"
+	"github.com/ncodes/nomad/nomad/types"
 )
 
 const (

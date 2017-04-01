@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/nomad/structs"
 	"github.com/mitchellh/cli"
 )
 

@@ -12,11 +12,11 @@ import (
 
 	"github.com/hashicorp/go-multierror"
 	"github.com/hashicorp/go-plugin"
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/client/driver/executor"
-	cstructs "github.com/hashicorp/nomad/client/driver/structs"
-	"github.com/hashicorp/nomad/helper/discover"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/client/driver/executor"
+	cstructs "github.com/ncodes/nomad/client/driver/structs"
+	"github.com/ncodes/nomad/helper/discover"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // cgroupsMounted returns true if the cgroups are mounted on a system otherwise

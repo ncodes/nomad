@@ -3,7 +3,7 @@ package api
 import (
 	"testing"
 
-	"github.com/hashicorp/nomad/helper"
+	"github.com/ncodes/nomad/helper"
 )
 
 func assertQueryMeta(t *testing.T, qm *QueryMeta) {

@@ -10,12 +10,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/client/allocdir"
-	"github.com/hashicorp/nomad/client/driver/env"
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
-	cstructs "github.com/hashicorp/nomad/client/structs"
-	"github.com/hashicorp/nomad/client/testutil"
-	"github.com/hashicorp/nomad/nomad/mock"
+	"github.com/ncodes/nomad/client/allocdir"
+	"github.com/ncodes/nomad/client/driver/env"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
+	cstructs "github.com/ncodes/nomad/client/structs"
+	"github.com/ncodes/nomad/client/testutil"
+	"github.com/ncodes/nomad/nomad/mock"
 )
 
 // testExecutorContextWithChroot returns an ExecutorContext and AllocDir with

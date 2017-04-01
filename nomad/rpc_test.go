@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/testutil"
 )
 
 // rpcClient is a test helper method to return a ClientCodec to use to make rpc

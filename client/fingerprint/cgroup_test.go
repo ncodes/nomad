@@ -6,8 +6,8 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // A fake mount point detector that returns an empty path

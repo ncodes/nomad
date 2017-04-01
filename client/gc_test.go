@@ -6,9 +6,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/client/stats"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/stats"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 var gcConfig = GCConfig{

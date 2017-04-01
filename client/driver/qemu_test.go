@@ -7,10 +7,10 @@ import (
 	"syscall"
 	"testing"
 
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
 
-	ctestutils "github.com/hashicorp/nomad/client/testutil"
+	ctestutils "github.com/ncodes/nomad/client/testutil"
 )
 
 // The fingerprinter test should always pass, even if QEMU is not installed.

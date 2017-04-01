@@ -8,10 +8,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/helper/tlsutil"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/nomad/structs/config"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/helper/tlsutil"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs/config"
 )
 
 var (

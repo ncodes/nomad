@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/hashicorp/nomad/helper"
-	hargs "github.com/hashicorp/nomad/helper/args"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/helper"
+	hargs "github.com/ncodes/nomad/helper/args"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // A set of environment variables that are exported by each driver.

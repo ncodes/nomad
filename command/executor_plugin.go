@@ -7,8 +7,8 @@ import (
 
 	"github.com/hashicorp/go-plugin"
 
-	"github.com/hashicorp/nomad/client/driver"
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
+	"github.com/ncodes/nomad/client/driver"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
 )
 
 type ExecutorPluginCommand struct {

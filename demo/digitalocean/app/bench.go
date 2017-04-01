@@ -8,8 +8,8 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 func main() {

@@ -13,10 +13,10 @@ import (
 
 	"golang.org/x/time/rate"
 
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/nomad/structs/config"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs/config"
+	"github.com/ncodes/nomad/testutil"
 	vapi "github.com/hashicorp/vault/api"
 )
 

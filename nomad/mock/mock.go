@@ -3,7 +3,7 @@ package mock
 import (
 	"time"
 
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 func Node() *structs.Node {

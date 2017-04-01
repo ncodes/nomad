@@ -6,8 +6,8 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 const bytesPerMegabyte = 1024 * 1024

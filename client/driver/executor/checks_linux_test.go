@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
-	"github.com/hashicorp/nomad/client/testutil"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
+	"github.com/ncodes/nomad/client/testutil"
 )
 
 func TestExecScriptCheckWithIsolation(t *testing.T) {

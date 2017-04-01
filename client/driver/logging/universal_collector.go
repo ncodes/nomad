@@ -12,9 +12,9 @@ import (
 	"runtime"
 
 	syslog "github.com/RackSec/srslog"
-	"github.com/hashicorp/nomad/client/allocdir"
-	cstructs "github.com/hashicorp/nomad/client/driver/structs"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/allocdir"
+	cstructs "github.com/ncodes/nomad/client/driver/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // LogCollectorContext holds context to configure the syslog server

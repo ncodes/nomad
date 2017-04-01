@@ -12,7 +12,7 @@ import (
 	"github.com/shirou/gopsutil/host"
 	"github.com/shirou/gopsutil/mem"
 
-	shelpers "github.com/hashicorp/nomad/helper/stats"
+	shelpers "github.com/ncodes/nomad/helper/stats"
 )
 
 // HostStats represents resource usage stats of the host running a Nomad client

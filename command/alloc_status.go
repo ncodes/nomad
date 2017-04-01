@@ -11,8 +11,8 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/mitchellh/colorstring"
 
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/client"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/client"
 )
 
 type AllocStatusCommand struct {

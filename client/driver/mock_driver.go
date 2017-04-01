@@ -13,11 +13,11 @@ import (
 
 	"github.com/mitchellh/mapstructure"
 
-	"github.com/hashicorp/nomad/client/config"
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
-	"github.com/hashicorp/nomad/client/fingerprint"
-	cstructs "github.com/hashicorp/nomad/client/structs"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
+	"github.com/ncodes/nomad/client/fingerprint"
+	cstructs "github.com/ncodes/nomad/client/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // Add the mock driver to the list of builtin drivers

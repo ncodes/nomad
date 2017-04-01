@@ -5,8 +5,8 @@ import (
 	"testing"
 	"time"
 
-	cstructs "github.com/hashicorp/nomad/client/driver/structs"
-	"github.com/hashicorp/nomad/nomad/structs"
+	cstructs "github.com/ncodes/nomad/client/driver/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 func testPolicy(success bool, mode string) *structs.RestartPolicy {

@@ -7,7 +7,7 @@ import (
 	"os"
 	"path/filepath"
 
-	cstructs "github.com/hashicorp/nomad/client/structs"
+	cstructs "github.com/ncodes/nomad/client/structs"
 )
 
 // TaskDir contains all of the paths relevant to a task. All paths are on the

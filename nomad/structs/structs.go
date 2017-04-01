@@ -24,8 +24,8 @@ import (
 	"github.com/hashicorp/consul/api"
 	"github.com/hashicorp/go-multierror"
 	"github.com/hashicorp/go-version"
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/helper/args"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/helper/args"
 	"github.com/mitchellh/copystructure"
 	"github.com/ugorji/go/codec"
 

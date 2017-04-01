@@ -7,9 +7,9 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/state"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/state"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // noErr is used to assert there are no errors

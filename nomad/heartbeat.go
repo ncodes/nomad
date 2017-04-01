@@ -6,7 +6,7 @@ import (
 	"github.com/armon/go-metrics"
 	"github.com/hashicorp/consul/lib"
 	memdb "github.com/hashicorp/go-memdb"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // initializeHeartbeatTimers is used when a leader is newly elected to create

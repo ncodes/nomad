@@ -5,8 +5,8 @@ import (
 	"testing"
 
 	"github.com/hashicorp/net-rpc-msgpackrpc"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/testutil"
 )
 
 func TestRegionList(t *testing.T) {

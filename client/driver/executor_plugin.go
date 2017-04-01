@@ -8,9 +8,9 @@ import (
 	"syscall"
 
 	"github.com/hashicorp/go-plugin"
-	"github.com/hashicorp/nomad/client/driver/executor"
-	cstructs "github.com/hashicorp/nomad/client/structs"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/driver/executor"
+	cstructs "github.com/ncodes/nomad/client/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // Registering these types since we have to serialize and de-serialize the Task

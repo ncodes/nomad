@@ -11,9 +11,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/helper/flatmap"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/helper/flatmap"
 	"github.com/kr/pretty"
 	"github.com/mitchellh/cli"
 )

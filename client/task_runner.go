@@ -16,16 +16,16 @@ import (
 	"github.com/golang/snappy"
 	"github.com/hashicorp/consul-template/signals"
 	"github.com/hashicorp/go-multierror"
-	"github.com/hashicorp/nomad/client/allocdir"
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/client/driver"
-	"github.com/hashicorp/nomad/client/getter"
-	"github.com/hashicorp/nomad/client/vaultclient"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/allocdir"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/client/driver"
+	"github.com/ncodes/nomad/client/getter"
+	"github.com/ncodes/nomad/client/vaultclient"
+	"github.com/ncodes/nomad/nomad/structs"
 
-	"github.com/hashicorp/nomad/client/driver/env"
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
-	cstructs "github.com/hashicorp/nomad/client/structs"
+	"github.com/ncodes/nomad/client/driver/env"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
+	cstructs "github.com/ncodes/nomad/client/structs"
 )
 
 const (

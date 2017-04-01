@@ -1,6 +1,6 @@
 package nomad
 
-import "github.com/hashicorp/nomad/nomad/structs"
+import "github.com/ncodes/nomad/nomad/structs"
 
 // Region is used to query and list the known regions
 type Region struct {

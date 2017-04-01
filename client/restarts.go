@@ -6,8 +6,8 @@ import (
 	"sync"
 	"time"
 
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
-	"github.com/hashicorp/nomad/nomad/structs"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 const (

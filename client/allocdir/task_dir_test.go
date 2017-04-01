@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	cstructs "github.com/hashicorp/nomad/client/structs"
+	cstructs "github.com/ncodes/nomad/client/structs"
 )
 
 // Test that building a chroot will skip nonexistent directories.

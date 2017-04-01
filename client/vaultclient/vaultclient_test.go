@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/testutil"
 	vaultapi "github.com/hashicorp/vault/api"
 )
 

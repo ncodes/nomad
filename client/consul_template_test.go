@@ -11,12 +11,12 @@ import (
 	"time"
 
 	ctestutil "github.com/hashicorp/consul/testutil"
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/client/driver/env"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
-	sconfig "github.com/hashicorp/nomad/nomad/structs/config"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/client/driver/env"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
+	sconfig "github.com/ncodes/nomad/nomad/structs/config"
+	"github.com/ncodes/nomad/testutil"
 )
 
 const (

@@ -5,8 +5,8 @@ package fingerprint
 import (
 	"fmt"
 
-	client "github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
+	client "github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
 	"github.com/opencontainers/runc/libcontainer/cgroups"
 )
 

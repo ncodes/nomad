@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/testutil"
 )
 
 func TestJobs_Register(t *testing.T) {

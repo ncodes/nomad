@@ -7,7 +7,7 @@ import (
 	"time"
 
 	consul "github.com/hashicorp/consul/api"
-	"github.com/hashicorp/nomad/helper"
+	"github.com/ncodes/nomad/helper"
 )
 
 // ConsulConfig contains the configuration information necessary to

@@ -10,12 +10,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/client/allocdir"
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/client/driver/env"
-	"github.com/hashicorp/nomad/helper/testtask"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/allocdir"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/client/driver/env"
+	"github.com/ncodes/nomad/helper/testtask"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 var basicResources = &structs.Resources{

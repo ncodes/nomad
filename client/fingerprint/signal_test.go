@@ -3,7 +3,7 @@ package fingerprint
 import (
 	"testing"
 
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 func TestSignalFingerprint(t *testing.T) {

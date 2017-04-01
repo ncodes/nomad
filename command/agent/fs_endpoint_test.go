@@ -18,8 +18,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/client/allocdir"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/client/allocdir"
+	"github.com/ncodes/nomad/testutil"
 	"github.com/ugorji/go/codec"
 )
 

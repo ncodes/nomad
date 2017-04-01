@@ -14,9 +14,9 @@ import (
 	"github.com/hashicorp/consul-template/manager"
 	"github.com/hashicorp/consul-template/signals"
 	multierror "github.com/hashicorp/go-multierror"
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/client/driver/env"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/client/driver/env"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 const (

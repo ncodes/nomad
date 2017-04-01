@@ -1,8 +1,8 @@
 package nomad
 
 import (
-	"github.com/hashicorp/nomad/nomad/state"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/state"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 const (

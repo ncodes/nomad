@@ -6,7 +6,7 @@ import (
 
 	"github.com/armon/go-metrics"
 	"github.com/hashicorp/consul/lib"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 const (

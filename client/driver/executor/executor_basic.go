@@ -5,7 +5,7 @@ package executor
 import (
 	"os"
 
-	cstructs "github.com/hashicorp/nomad/client/structs"
+	cstructs "github.com/ncodes/nomad/client/structs"
 	"github.com/mitchellh/go-ps"
 )
 

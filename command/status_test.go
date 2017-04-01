@@ -4,8 +4,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/testutil"
 	"github.com/mitchellh/cli"
 )
 

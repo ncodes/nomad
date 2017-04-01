@@ -8,8 +8,8 @@ import (
 	"sync"
 
 	gg "github.com/hashicorp/go-getter"
-	"github.com/hashicorp/nomad/client/driver/env"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/driver/env"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 var (

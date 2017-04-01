@@ -14,11 +14,11 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/hashicorp/nomad/client"
-	clientconfig "github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/command/agent/consul"
-	"github.com/hashicorp/nomad/nomad"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client"
+	clientconfig "github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/command/agent/consul"
+	"github.com/ncodes/nomad/nomad"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 const (

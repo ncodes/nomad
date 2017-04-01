@@ -8,7 +8,7 @@ import (
 
 	syslog "github.com/RackSec/srslog"
 
-	"github.com/hashicorp/nomad/client/driver/logging"
+	"github.com/ncodes/nomad/client/driver/logging"
 )
 
 func (e *UniversalExecutor) LaunchSyslogServer() (*SyslogServerState, error) {

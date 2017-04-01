@@ -6,8 +6,8 @@ import (
 	"runtime"
 	"testing"
 
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 func BenchmarkServiceStack_With_ComputedClass(b *testing.B) {

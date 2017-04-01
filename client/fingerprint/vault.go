@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	client "github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
+	client "github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
 	vapi "github.com/hashicorp/vault/api"
 )
 

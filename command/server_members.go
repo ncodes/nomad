@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/hashicorp/nomad/api"
+	"github.com/ncodes/nomad/api"
 	"github.com/ryanuber/columnize"
 )
 

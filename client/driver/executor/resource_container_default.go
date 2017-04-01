@@ -3,7 +3,7 @@
 package executor
 
 import (
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
 )
 
 // resourceContainerContext is a platform-specific struct for managing a

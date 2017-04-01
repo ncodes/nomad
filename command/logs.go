@@ -9,7 +9,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/hashicorp/nomad/api"
+	"github.com/ncodes/nomad/api"
 )
 
 type LogsCommand struct {

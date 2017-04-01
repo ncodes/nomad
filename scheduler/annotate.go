@@ -3,7 +3,7 @@ package scheduler
 import (
 	"strconv"
 
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 const (

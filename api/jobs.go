@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"github.com/gorhill/cronexpr"
-	"github.com/hashicorp/nomad/helper"
+	"github.com/ncodes/nomad/helper"
 )
 
 const (

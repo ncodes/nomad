@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/testutil"
 	"github.com/hashicorp/serf/serf"
 )
 

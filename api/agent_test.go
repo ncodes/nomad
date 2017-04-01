@@ -5,7 +5,7 @@ import (
 	"sort"
 	"testing"
 
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/testutil"
 )
 
 func TestAgent_Self(t *testing.T) {

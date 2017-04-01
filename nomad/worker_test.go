@@ -9,10 +9,10 @@ import (
 	"time"
 
 	memdb "github.com/hashicorp/go-memdb"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/scheduler"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/scheduler"
+	"github.com/ncodes/nomad/testutil"
 )
 
 type NoopScheduler struct {

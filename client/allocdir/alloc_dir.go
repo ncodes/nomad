@@ -13,7 +13,7 @@ import (
 	"gopkg.in/tomb.v1"
 
 	"github.com/hashicorp/go-multierror"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 	"github.com/hpcloud/tail/watch"
 )
 

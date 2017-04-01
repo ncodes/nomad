@@ -4,8 +4,8 @@ import (
 	"log"
 	"runtime"
 
-	client "github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
+	client "github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // ArchFingerprint is used to fingerprint the architecture

@@ -3,9 +3,9 @@ package fingerprint
 import (
 	"testing"
 
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/testutil"
 )
 
 func TestVaultFingerprint(t *testing.T) {

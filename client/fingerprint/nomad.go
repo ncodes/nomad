@@ -3,8 +3,8 @@ package fingerprint
 import (
 	"log"
 
-	client "github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
+	client "github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // NomadFingerprint is used to fingerprint the Nomad version

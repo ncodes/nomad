@@ -20,7 +20,7 @@ import (
 	"gopkg.in/tomb.v1"
 
 	"github.com/docker/docker/pkg/ioutils"
-	"github.com/hashicorp/nomad/client/allocdir"
+	"github.com/ncodes/nomad/client/allocdir"
 	"github.com/hpcloud/tail/watch"
 	"github.com/ugorji/go/codec"
 )

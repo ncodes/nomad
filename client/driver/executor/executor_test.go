@@ -11,12 +11,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/client/allocdir"
-	"github.com/hashicorp/nomad/client/driver/env"
-	cstructs "github.com/hashicorp/nomad/client/structs"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
-	tu "github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/client/allocdir"
+	"github.com/ncodes/nomad/client/driver/env"
+	cstructs "github.com/ncodes/nomad/client/structs"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
+	tu "github.com/ncodes/nomad/testutil"
 	"github.com/mitchellh/go-ps"
 )
 

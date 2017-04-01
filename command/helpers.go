@@ -10,8 +10,8 @@ import (
 	"time"
 
 	gg "github.com/hashicorp/go-getter"
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/jobspec"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/jobspec"
 
 	"github.com/ryanuber/columnize"
 )

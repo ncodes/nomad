@@ -6,8 +6,8 @@ import (
 	"sort"
 	"time"
 
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // EmptyDuration is to be used by fingerprinters that are not periodic.

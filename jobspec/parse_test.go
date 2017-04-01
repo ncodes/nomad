@@ -7,9 +7,9 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/nomad/structs"
 	"github.com/kr/pretty"
 
 	capi "github.com/hashicorp/consul/api"

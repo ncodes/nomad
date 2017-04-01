@@ -12,8 +12,8 @@ import (
 	"github.com/armon/go-metrics"
 	"github.com/hashicorp/go-memdb"
 	"github.com/hashicorp/go-multierror"
-	"github.com/hashicorp/nomad/nomad/state"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/state"
+	"github.com/ncodes/nomad/nomad/structs"
 	"github.com/hashicorp/raft"
 	vapi "github.com/hashicorp/vault/api"
 )

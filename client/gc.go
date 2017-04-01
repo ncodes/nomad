@@ -7,8 +7,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/hashicorp/nomad/client/stats"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/stats"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 const (

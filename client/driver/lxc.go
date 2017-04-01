@@ -13,15 +13,15 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/client/fingerprint"
-	"github.com/hashicorp/nomad/client/stats"
-	"github.com/hashicorp/nomad/helper/fields"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/client/fingerprint"
+	"github.com/ncodes/nomad/client/stats"
+	"github.com/ncodes/nomad/helper/fields"
+	"github.com/ncodes/nomad/nomad/structs"
 	"github.com/mitchellh/mapstructure"
 
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
-	cstructs "github.com/hashicorp/nomad/client/structs"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
+	cstructs "github.com/ncodes/nomad/client/structs"
 	lxc "gopkg.in/lxc/go-lxc.v2"
 )
 

@@ -9,7 +9,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/testutil"
 )
 
 type configCallback func(c *Config)

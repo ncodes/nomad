@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/hashicorp/nomad/api"
+	"github.com/ncodes/nomad/api"
 	"github.com/mitchellh/cli"
 )
 

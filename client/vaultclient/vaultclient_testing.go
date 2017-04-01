@@ -1,7 +1,7 @@
 package vaultclient
 
 import (
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 	vaultapi "github.com/hashicorp/vault/api"
 )
 

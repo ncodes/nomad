@@ -3,7 +3,7 @@ package scheduler
 import (
 	"fmt"
 
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // Rank is used to provide a score and various ranking metadata

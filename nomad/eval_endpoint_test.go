@@ -8,10 +8,10 @@ import (
 
 	memdb "github.com/hashicorp/go-memdb"
 	"github.com/hashicorp/net-rpc-msgpackrpc"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/scheduler"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/scheduler"
+	"github.com/ncodes/nomad/testutil"
 )
 
 func TestEvalEndpoint_GetEval(t *testing.T) {

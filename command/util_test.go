@@ -3,9 +3,9 @@ package command
 import (
 	"testing"
 
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/testutil"
 )
 
 // seen is used to track which tests we have already

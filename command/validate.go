@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	multierror "github.com/hashicorp/go-multierror"
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/command/agent"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/command/agent"
 )
 
 type ValidateCommand struct {

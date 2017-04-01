@@ -11,11 +11,11 @@ import (
 	"github.com/hashicorp/consul/lib"
 	"github.com/hashicorp/go-memdb"
 	"github.com/hashicorp/go-multierror"
-	"github.com/hashicorp/nomad/client/driver"
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/nomad/state"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/scheduler"
+	"github.com/ncodes/nomad/client/driver"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/nomad/state"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/scheduler"
 )
 
 const (

@@ -22,9 +22,9 @@ import (
 	"github.com/hashicorp/go-checkpoint"
 	"github.com/hashicorp/go-syslog"
 	"github.com/hashicorp/logutils"
-	"github.com/hashicorp/nomad/helper/flag-helpers"
-	"github.com/hashicorp/nomad/helper/gated-writer"
-	"github.com/hashicorp/nomad/nomad/structs/config"
+	"github.com/ncodes/nomad/helper/flag-helpers"
+	"github.com/ncodes/nomad/helper/gated-writer"
+	"github.com/ncodes/nomad/nomad/structs/config"
 	"github.com/hashicorp/scada-client/scada"
 	"github.com/mitchellh/cli"
 )

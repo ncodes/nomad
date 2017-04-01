@@ -68,7 +68,7 @@ To use this virtual machine, checkout Nomad and run `vagrant up` from the root
 of the repository:
 
 ```sh
-$ git clone https://github.com/hashicorp/nomad.git
+$ git clone https://github.com/ncodes/nomad.git
 $ cd nomad
 $ vagrant up
 ```
@@ -79,7 +79,7 @@ needed dependencies.
 **Developing locally**
 For local dev first make sure Go is properly installed, including setting up a
 [GOPATH](https://golang.org/doc/code.html#GOPATH). After setting up Go, clone this 
-repository into `$GOPATH/src/github.com/hashicorp/nomad`. Then you can
+repository into `$GOPATH/src/github.com/ncodes/nomad`. Then you can
 download the required build tools such as vet, cover, godep etc by bootstrapping
 your environment.
 

@@ -15,14 +15,14 @@ import (
 	"time"
 
 	docker "github.com/fsouza/go-dockerclient"
-	"github.com/hashicorp/nomad/client/allocdir"
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/client/driver/env"
-	cstructs "github.com/hashicorp/nomad/client/structs"
-	"github.com/hashicorp/nomad/client/testutil"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
-	tu "github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/client/allocdir"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/client/driver/env"
+	cstructs "github.com/ncodes/nomad/client/structs"
+	"github.com/ncodes/nomad/client/testutil"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
+	tu "github.com/ncodes/nomad/testutil"
 )
 
 func dockerIsRemote(t *testing.T) bool {

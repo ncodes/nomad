@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/hashicorp/nomad/nomad/structs/config"
+	"github.com/ncodes/nomad/nomad/structs/config"
 )
 
 func TestConfig_Parse(t *testing.T) {

@@ -5,7 +5,7 @@ import (
 	"sort"
 	"strings"
 
-	"github.com/hashicorp/nomad/api"
+	"github.com/ncodes/nomad/api"
 )
 
 type EvalStatusCommand struct {

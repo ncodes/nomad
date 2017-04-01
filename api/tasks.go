@@ -5,7 +5,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/hashicorp/nomad/helper"
+	"github.com/ncodes/nomad/helper"
 )
 
 // MemoryStats holds memory usage related stats

@@ -7,14 +7,14 @@ import (
 	"os"
 	"strings"
 
-	"github.com/hashicorp/nomad/client/allocdir"
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/client/driver/env"
-	"github.com/hashicorp/nomad/client/fingerprint"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/allocdir"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/client/driver/env"
+	"github.com/ncodes/nomad/client/fingerprint"
+	"github.com/ncodes/nomad/nomad/structs"
 
-	dstructs "github.com/hashicorp/nomad/client/driver/structs"
-	cstructs "github.com/hashicorp/nomad/client/structs"
+	dstructs "github.com/ncodes/nomad/client/driver/structs"
+	cstructs "github.com/ncodes/nomad/client/structs"
 )
 
 var (

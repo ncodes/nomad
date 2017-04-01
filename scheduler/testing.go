@@ -8,8 +8,8 @@ import (
 	"testing"
 
 	memdb "github.com/hashicorp/go-memdb"
-	"github.com/hashicorp/nomad/nomad/state"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/state"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // RejectPlan is used to always reject the entire plan and force a state refresh

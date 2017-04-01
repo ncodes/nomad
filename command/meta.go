@@ -7,7 +7,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/hashicorp/nomad/api"
+	"github.com/ncodes/nomad/api"
 	"github.com/mitchellh/cli"
 	"github.com/mitchellh/colorstring"
 )

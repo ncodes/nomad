@@ -6,8 +6,8 @@ import (
 	"time"
 
 	docker "github.com/fsouza/go-dockerclient"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/testutil"
 )
 
 type mockImageClient struct {

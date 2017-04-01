@@ -1,6 +1,6 @@
 package nomad
 
-import "github.com/hashicorp/nomad/nomad/structs"
+import "github.com/ncodes/nomad/nomad/structs"
 
 // Status endpoint is used to check on server status
 type Status struct {

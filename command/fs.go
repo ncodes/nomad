@@ -11,7 +11,7 @@ import (
 	"time"
 
 	humanize "github.com/dustin/go-humanize"
-	"github.com/hashicorp/nomad/api"
+	"github.com/ncodes/nomad/api"
 )
 
 const (

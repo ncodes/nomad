@@ -16,7 +16,7 @@ we will create our first real cluster with multiple nodes.
 ## Starting the Server
 
 The first step is to create the config file for the server. Either download
-the file from the [repository here](https://github.com/hashicorp/nomad/tree/master/demo/vagrant),
+the file from the [repository here](https://github.com/ncodes/nomad/tree/master/demo/vagrant),
 or paste this into a file called `server.hcl`:
 
 ```hcl
@@ -81,7 +81,7 @@ Now we need some agents to run tasks!
 
 Similar to the server, we must first configure the clients. Either download
 the configuration for client1 and client2 from the
-[repository here](https://github.com/hashicorp/nomad/tree/master/demo/vagrant), or
+[repository here](https://github.com/ncodes/nomad/tree/master/demo/vagrant), or
 paste the following into `client1.hcl`:
 
 ```

@@ -4,8 +4,8 @@ import (
 	"context"
 	"time"
 
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/nomad/structs/config"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs/config"
 	vapi "github.com/hashicorp/vault/api"
 )
 

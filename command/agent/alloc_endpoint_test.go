@@ -8,8 +8,8 @@ import (
 	"testing"
 
 	"github.com/golang/snappy"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 func TestHTTP_AllocsList(t *testing.T) {

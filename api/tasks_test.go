@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/hashicorp/nomad/helper"
+	"github.com/ncodes/nomad/helper"
 )
 
 func TestTaskGroup_NewTaskGroup(t *testing.T) {

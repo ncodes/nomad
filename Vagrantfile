@@ -75,7 +75,7 @@ sudo service docker restart
 sudo usermod -aG docker vagrant
 
 # Setup Nomad for development
-cd /opt/gopath/src/github.com/hashicorp/nomad && make bootstrap
+cd /opt/gopath/src/github.com/ncodes/nomad && make bootstrap
 
 # Install rkt, consul and vault
 bash scripts/install_rkt.sh
@@ -87,7 +87,7 @@ bash scripts/install_vault.sh
 sudo sed -i -e "s/.*nomad.*/$(ip route get 1 | awk '{print $NF;exit}') $(hostname)/" /etc/hosts
 
 # CD into the nomad working directory when we login to the VM
-grep "cd /opt/gopath/src/github.com/hashicorp/nomad" ~/.profile || echo "cd /opt/gopath/src/github.com/hashicorp/nomad" >> ~/.profile
+grep "cd /opt/gopath/src/github.com/ncodes/nomad" ~/.profile || echo "cd /opt/gopath/src/github.com/ncodes/nomad" >> ~/.profile
 SCRIPT
 
 def configureVM(vmCfg, vmParams={
@@ -98,7 +98,7 @@ def configureVM(vmCfg, vmParams={
   vmCfg.vm.box = "bento/ubuntu-16.04" # 16.04 LTS
 
   vmCfg.vm.provision "shell", inline: $script, privileged: false
-  vmCfg.vm.synced_folder '.', '/opt/gopath/src/github.com/hashicorp/nomad'
+  vmCfg.vm.synced_folder '.', '/opt/gopath/src/github.com/ncodes/nomad'
 
   # We're going to compile go and run a concurrent system, so give ourselves
   # some extra resources. Nomad will have trouble working correctly with <2

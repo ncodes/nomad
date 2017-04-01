@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/golang/snappy"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 const (

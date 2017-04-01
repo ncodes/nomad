@@ -11,9 +11,9 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/hashicorp/nomad/client/driver/env"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/driver/env"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 func TestGetArtifact_FileAndChecksum(t *testing.T) {
@@ -226,12 +226,12 @@ func TestGetGetterUrl_Queries(t *testing.T) {
 		{
 			name: "git without http",
 			artifact: &structs.TaskArtifact{
-				GetterSource: "github.com/hashicorp/nomad",
+				GetterSource: "github.com/ncodes/nomad",
 				GetterOptions: map[string]string{
 					"ref": "abcd1234",
 				},
 			},
-			output: "github.com/hashicorp/nomad?ref=abcd1234",
+			output: "github.com/ncodes/nomad?ref=abcd1234",
 		},
 		{
 			name: "git using ssh",

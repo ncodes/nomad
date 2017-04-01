@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/hashicorp/consul/lib"
-	cstructs "github.com/hashicorp/nomad/client/driver/structs"
+	cstructs "github.com/ncodes/nomad/client/driver/structs"
 )
 
 // CheckRunner runs a given check in a specific interval and update a

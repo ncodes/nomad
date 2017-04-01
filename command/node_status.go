@@ -10,8 +10,8 @@ import (
 	"github.com/dustin/go-humanize"
 	"github.com/mitchellh/colorstring"
 
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/helper"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/helper"
 )
 
 const (

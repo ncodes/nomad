@@ -10,9 +10,9 @@ import (
 
 	"github.com/armon/go-metrics"
 	memdb "github.com/hashicorp/go-memdb"
-	"github.com/hashicorp/nomad/nomad/state"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/scheduler"
+	"github.com/ncodes/nomad/nomad/state"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/scheduler"
 	"github.com/hashicorp/raft"
 	"github.com/ugorji/go/codec"
 )

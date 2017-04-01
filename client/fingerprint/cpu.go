@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/helper/stats"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/helper/stats"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // CPUFingerprint is used to fingerprint the CPU

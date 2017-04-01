@@ -12,8 +12,8 @@ import (
 	"time"
 
 	"github.com/hashicorp/consul/testutil"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/nomad/structs/config"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs/config"
 )
 
 func TestSyncerChaos(t *testing.T) {

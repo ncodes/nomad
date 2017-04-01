@@ -3,8 +3,8 @@ package main
 import (
 	"os"
 
-	"github.com/hashicorp/nomad/command"
-	"github.com/hashicorp/nomad/command/agent"
+	"github.com/ncodes/nomad/command"
+	"github.com/ncodes/nomad/command/agent"
 	"github.com/mitchellh/cli"
 )
 

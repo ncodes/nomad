@@ -5,8 +5,8 @@ import (
 	"strings"
 
 	"github.com/hashicorp/consul-template/signals"
-	"github.com/hashicorp/nomad/client/config"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/client/config"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // SignalFingerprint is used to fingerprint the available signals

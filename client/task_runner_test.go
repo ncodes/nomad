@@ -14,15 +14,15 @@ import (
 	"time"
 
 	"github.com/golang/snappy"
-	"github.com/hashicorp/nomad/client/allocdir"
-	"github.com/hashicorp/nomad/client/config"
-	cstructs "github.com/hashicorp/nomad/client/structs"
-	"github.com/hashicorp/nomad/client/vaultclient"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/client/allocdir"
+	"github.com/ncodes/nomad/client/config"
+	cstructs "github.com/ncodes/nomad/client/structs"
+	"github.com/ncodes/nomad/client/vaultclient"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/testutil"
 
-	ctestutil "github.com/hashicorp/nomad/client/testutil"
+	ctestutil "github.com/ncodes/nomad/client/testutil"
 )
 
 func testLogger() *log.Logger {

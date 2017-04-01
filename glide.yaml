@@ -1,0 +1,187 @@
+package: github.com/ncodes/nomad
+import:
+- package: archive/tar
+- package: bufio
+- package: bytes
+- package: compress/gzip
+- package: container/heap
+- package: container/list
+- package: context
+- package: crypto/md5
+- package: crypto/rand
+- package: crypto/sha1
+- package: crypto/sha256
+- package: crypto/sha512
+- package: crypto/tls
+- package: crypto/x509
+- package: encoding/base64
+- package: encoding/gob
+- package: encoding/hex
+- package: encoding/json
+- package: errors
+- package: flag
+- package: fmt
+- package: github.com/NYTimes/gziphandler
+- package: github.com/RackSec/srslog
+- package: github.com/armon/circbuf
+- package: github.com/armon/go-metrics
+  subpackages:
+  - circonus
+  - datadog
+- package: github.com/docker/docker
+  subpackages:
+  - cli/config/configfile
+  - pkg/ioutils
+  - reference
+  - registry
+- package: github.com/dustin/go-humanize
+- package: github.com/fsouza/go-dockerclient
+- package: github.com/golang/snappy
+- package: github.com/gorhill/cronexpr
+- package: github.com/hashicorp/consul-template
+  subpackages:
+  - config
+  - manager
+  - signals
+- package: github.com/hashicorp/consul
+  subpackages:
+  - api
+  - lib
+- package: github.com/hashicorp/go-checkpoint
+- package: github.com/hashicorp/go-cleanhttp
+- package: github.com/hashicorp/go-getter
+- package: github.com/hashicorp/go-memdb
+- package: github.com/hashicorp/go-msgpack
+  subpackages:
+  - codec
+- package: github.com/hashicorp/go-multierror
+- package: github.com/hashicorp/go-plugin
+- package: github.com/hashicorp/go-rootcerts
+- package: github.com/hashicorp/go-syslog
+- package: github.com/hashicorp/go-version
+- package: github.com/hashicorp/hcl
+  subpackages:
+  - hcl/ast
+- package: github.com/hashicorp/logutils
+- package: github.com/hashicorp/memberlist
+- package: github.com/hashicorp/net-rpc-msgpackrpc
+- package: github.com/ncodes/nomad
+  subpackages:
+  - api
+  - client
+  - client/allocdir
+  - client/config
+  - client/driver
+  - client/driver/env
+  - client/driver/executor
+  - client/driver/logging
+  - client/driver/structs
+  - client/fingerprint
+  - client/getter
+  - client/stats
+  - client/structs
+  - client/vaultclient
+  - command
+  - command/agent
+  - command/agent/consul
+  - helper
+  - helper/args
+  - helper/discover
+  - helper/fields
+  - helper/flag-helpers
+  - helper/flatmap
+  - helper/gated-writer
+  - helper/stats
+  - helper/tlsutil
+  - jobspec
+  - nomad
+  - nomad/state
+  - nomad/structs
+  - nomad/structs/config
+  - nomad/types
+  - scheduler
+  - testutil
+- package: github.com/hashicorp/raft
+- package: github.com/hashicorp/raft-boltdb
+- package: github.com/hashicorp/scada-client
+  subpackages:
+  - scada
+- package: github.com/hashicorp/serf
+  subpackages:
+  - serf
+- package: github.com/hashicorp/vault
+  subpackages:
+  - api
+- package: github.com/hashicorp/yamux
+- package: github.com/hpcloud/tail
+  subpackages:
+  - watch
+- package: github.com/kardianos/osext
+- package: github.com/mitchellh/cli
+- package: github.com/mitchellh/colorstring
+- package: github.com/mitchellh/copystructure
+- package: github.com/mitchellh/go-ps
+- package: github.com/mitchellh/hashstructure
+- package: github.com/mitchellh/mapstructure
+- package: github.com/opencontainers/runc
+  subpackages:
+  - libcontainer/cgroups
+  - libcontainer/cgroups/fs
+  - libcontainer/configs
+- package: github.com/ryanuber/columnize
+- package: github.com/sean-/seed
+- package: github.com/shirou/gopsutil
+  subpackages:
+  - cpu
+  - disk
+  - host
+  - mem
+  - process
+- package: github.com/ugorji/go
+  subpackages:
+  - codec
+- package: golang.org/x/sync
+  subpackages:
+  - errgroup
+- package: golang.org/x/sys
+  subpackages:
+  - unix
+- package: golang.org/x/time
+  subpackages:
+  - rate
+- package: gopkg.in/lxc/go-lxc.v2
+- package: gopkg.in/tomb.v1
+- package: gopkg.in/tomb.v2
+- package: io
+- package: io/ioutil
+- package: log
+- package: math
+- package: math/rand
+- package: net
+- package: net/http
+- package: net/http/pprof
+- package: net/rpc
+- package: net/url
+- package: os
+- package: os/exec
+- package: os/signal
+- package: os/user
+- package: path/filepath
+- package: reflect
+- package: regexp
+- package: runtime
+- package: sort
+- package: strconv
+- package: strings
+- package: sync
+- package: sync/atomic
+- package: syscall
+- package: testing
+- package: text/template
+- package: time
+- package: unsafe
+testImport:
+- package: github.com/kr/pretty
+- package: net/http/httptest
+- package: path
+- package: runtime/debug

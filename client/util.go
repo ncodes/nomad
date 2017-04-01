@@ -8,7 +8,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 type allocTuple struct {
@@ -97,7 +97,7 @@ func persistState(path string, data interface{}) error {
 	if stat, err := os.Stat(path); err != nil {
 		return fmt.Errorf("unable to stat state file %s: %v", path, err)
 	} else if stat.Size() == 0 {
-		return fmt.Errorf("persisted invalid state file %s; see https://github.com/hashicorp/nomad/issues/1367", path)
+		return fmt.Errorf("persisted invalid state file %s; see https://github.com/ncodes/nomad/issues/1367", path)
 	}
 	return nil
 }

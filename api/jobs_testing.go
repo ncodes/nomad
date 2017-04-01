@@ -3,8 +3,8 @@ package api
 import (
 	"time"
 
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 func MockJob() *Job {

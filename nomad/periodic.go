@@ -10,7 +10,7 @@ import (
 	"time"
 
 	memdb "github.com/hashicorp/go-memdb"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 // PeriodicDispatch is used to track and launch periodic jobs. It maintains the

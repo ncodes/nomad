@@ -6,7 +6,7 @@ import (
 	"os"
 	"strings"
 
-	flaghelper "github.com/hashicorp/nomad/helper/flag-helpers"
+	flaghelper "github.com/ncodes/nomad/helper/flag-helpers"
 )
 
 type JobDispatchCommand struct {

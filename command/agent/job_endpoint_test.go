@@ -8,10 +8,10 @@ import (
 	"time"
 
 	"github.com/golang/snappy"
-	"github.com/hashicorp/nomad/api"
-	"github.com/hashicorp/nomad/helper"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
+	"github.com/ncodes/nomad/api"
+	"github.com/ncodes/nomad/helper"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
 )
 
 func TestHTTP_JobsList(t *testing.T) {

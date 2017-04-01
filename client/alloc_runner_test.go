@@ -10,13 +10,13 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-multierror"
-	"github.com/hashicorp/nomad/nomad/mock"
-	"github.com/hashicorp/nomad/nomad/structs"
-	"github.com/hashicorp/nomad/testutil"
+	"github.com/ncodes/nomad/nomad/mock"
+	"github.com/ncodes/nomad/nomad/structs"
+	"github.com/ncodes/nomad/testutil"
 
-	"github.com/hashicorp/nomad/client/config"
-	ctestutil "github.com/hashicorp/nomad/client/testutil"
-	"github.com/hashicorp/nomad/client/vaultclient"
+	"github.com/ncodes/nomad/client/config"
+	ctestutil "github.com/ncodes/nomad/client/testutil"
+	"github.com/ncodes/nomad/client/vaultclient"
 )
 
 type MockAllocStateUpdater struct {
