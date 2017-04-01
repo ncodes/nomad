@@ -48,6 +48,7 @@ type rawExecHandle struct {
 	logger         *log.Logger
 	waitCh         chan *dstructs.WaitResult
 	doneCh         chan struct{}
+	execCtx        *executor.ExecutorContext
 }
 
 // NewRawExecDriver is used to create a new raw exec driver
@@ -107,8 +108,6 @@ func (d *RawExecDriver) Prestart(*ExecContext, *structs.Task) (*CreatedResources
 
 func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandle, error) {
 
-	pretty.Println(d.taskEnv)
-
 	var driverConfig ExecDriverConfig
 	if err := mapstructure.WeakDecode(task.Config, &driverConfig); err != nil {
 		return nil, err
@@ -130,6 +129,7 @@ func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandl
 	if err != nil {
 		return nil, err
 	}
+
 	executorCtx := &executor.ExecutorContext{
 		TaskEnv: d.taskEnv,
 		Driver:  "raw_exec",
@@ -167,6 +167,7 @@ func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandl
 		logger:         d.logger,
 		doneCh:         make(chan struct{}),
 		waitCh:         make(chan *dstructs.WaitResult, 1),
+		execCtx:        executorCtx,
 	}
 	if err := h.executor.SyncServices(consulContext(d.config, "")); err != nil {
 		h.logger.Printf("[ERR] driver.raw_exec: error registering services with consul for task: %q: %v", task.Name, err)
@@ -270,8 +271,11 @@ func (h *rawExecHandle) Kill() error {
 
 	select {
 	case <-h.doneCh:
+		h.stopContainer()
 		return nil
 	case <-time.After(h.killTimeout):
+		h.stopContainer()
+
 		if h.pluginClient.Exited() {
 			return nil
 		}
@@ -281,6 +285,10 @@ func (h *rawExecHandle) Kill() error {
 
 		return nil
 	}
+}
+
+func (h *rawExecHandle) stopContainer() {
+	pretty.Println(h.execCtx.TaskEnv)
 }
 
 func (h *rawExecHandle) Stats() (*cstructs.TaskResourceUsage, error) {
