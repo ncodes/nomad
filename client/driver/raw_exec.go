@@ -293,11 +293,13 @@ func (h *rawExecHandle) Kill() error {
 
 // Delete any docker image with a matching id as the `CONTAINER_ID` in the TaskEnv
 func (h *rawExecHandle) stopContainer() error {
+	h.logger.Printf("[DEBUG] driver.raw_exec: Attempting to stop associated container")
 	if containerID, ok := h.execCtx.TaskEnv.Env["CONTAINER_ID"]; ok && len(containerID) > 0 {
 		if err := tools.DeleteContainer(containerID, false, false, false); err != nil {
 			return fmt.Errorf("failed to delete container attached to task (alloc id: %s)", h.execCtx.AllocID)
 		}
 	}
+	h.logger.Printf("[DEBUG] driver.raw_exec: Successfully stopped container")
 	return nil
 }
 
