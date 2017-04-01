@@ -298,6 +298,7 @@ func (h *rawExecHandle) stopContainer() error {
 		err := tools.DeleteContainer(containerID, false, false, false)
 		if err != nil {
 			if err == tools.ErrContainerNotFound {
+				h.logger.Printf("[DEBUG] driver.raw_exec: Container does not exists")
 				return nil
 			}
 			return fmt.Errorf("failed to delete container attached to task (alloc id: %s)", h.execCtx.AllocID)
