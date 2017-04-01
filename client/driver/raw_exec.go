@@ -9,8 +9,8 @@ import (
 	"time"
 
 	"github.com/hashicorp/go-plugin"
-	"github.com/kr/pretty"
 	"github.com/mitchellh/mapstructure"
+	"github.com/ncodes/cocoon/tools"
 	"github.com/ncodes/nomad/client/config"
 	"github.com/ncodes/nomad/client/driver/executor"
 	dstructs "github.com/ncodes/nomad/client/driver/structs"
@@ -271,11 +271,15 @@ func (h *rawExecHandle) Kill() error {
 
 	select {
 	case <-h.doneCh:
-		h.stopContainer()
+		if err := h.stopContainer(); err != nil {
+			return err
+		}
 		return nil
 	case <-time.After(h.killTimeout):
-		h.stopContainer()
 
+		if err := h.stopContainer(); err != nil {
+			return err
+		}
 		if h.pluginClient.Exited() {
 			return nil
 		}
@@ -287,8 +291,14 @@ func (h *rawExecHandle) Kill() error {
 	}
 }
 
-func (h *rawExecHandle) stopContainer() {
-	pretty.Println(h.execCtx.TaskEnv)
+// Delete any docker image with a matching id as the `CONTAINER_ID` in the TaskEnv
+func (h *rawExecHandle) stopContainer() error {
+	if containerID, ok := h.execCtx.TaskEnv.Env["CONTAINER_ID"]; ok && len(containerID) > 0 {
+		if err := tools.DeleteContainer(containerID, false, false, false); err != nil {
+			return fmt.Errorf("failed to delete container attached to task (alloc id: %s)", h.execCtx.AllocID)
+		}
+	}
+	return nil
 }
 
 func (h *rawExecHandle) Stats() (*cstructs.TaskResourceUsage, error) {
