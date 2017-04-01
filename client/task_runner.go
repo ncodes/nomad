@@ -1184,6 +1184,8 @@ func (r *TaskRunner) killTask(killingEvent *structs.TaskEvent) {
 
 // startTask creates the driver, task dir, and starts the task.
 func (r *TaskRunner) startTask() error {
+	fmt.Println("Start it!!!!!")
+	return nil
 	// Create a driver
 	drv, err := r.createDriver()
 	if err != nil {
