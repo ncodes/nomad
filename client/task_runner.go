@@ -16,6 +16,7 @@ import (
 	"github.com/golang/snappy"
 	"github.com/hashicorp/consul-template/signals"
 	"github.com/hashicorp/go-multierror"
+	"github.com/ncodes/cocoon/tools"
 	"github.com/ncodes/nomad/client/allocdir"
 	"github.com/ncodes/nomad/client/config"
 	"github.com/ncodes/nomad/client/driver"
@@ -870,14 +871,38 @@ func (r *TaskRunner) prestart(resultCh chan bool) {
 	}
 }
 
+// Delete any docker image with a matching id as the `CONTAINER_ID` in the TaskEnv
+func stopContainer(l *log.Logger, containerID string) error {
+	if containerID == "" {
+		return fmt.Errorf("Container id is required")
+	}
+
+	l.Printf("[DEBUG] driver.raw_exec: Attempting to stop associated container")
+
+	err := tools.DeleteContainer(containerID, false, false, false)
+	if err != nil {
+		if err == tools.ErrContainerNotFound {
+			l.Printf("[DEBUG] driver.raw_exec: Container does not exists")
+			return nil
+		}
+		return fmt.Errorf("failed to delete container attached to task")
+	}
+
+	l.Printf("[DEBUG] driver.raw_exec: Successfully stopped container")
+	return nil
+}
+
 // postrun is used to do any cleanup that is necessary after exiting the runloop
 func (r *TaskRunner) postrun() {
+
 	// Stop the template manager
 	if r.templateManager != nil {
 		r.templateManager.Stop()
 	}
 
-	r.logger.Println("[DEBUG] >> Post run")
+	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
+		r.logger.Printf("[DEBUG] %s", err.Error())
+	}
 }
 
 // run is the main run loop that handles starting the application, destroying
@@ -1065,7 +1090,6 @@ func (r *TaskRunner) run() {
 
 // cleanup calls Driver.Cleanup when a task is stopping. Errors are logged.
 func (r *TaskRunner) cleanup() {
-	r.logger.Println("[DEBUG] >> In clean up")
 	drv, err := r.createDriver()
 	if err != nil {
 		r.logger.Printf("[ERR] client: error creating driver to cleanup resources: %v", err)

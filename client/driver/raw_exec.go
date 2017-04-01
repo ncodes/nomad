@@ -10,7 +10,6 @@ import (
 
 	"github.com/hashicorp/go-plugin"
 	"github.com/mitchellh/mapstructure"
-	"github.com/ncodes/cocoon/tools"
 	"github.com/ncodes/nomad/client/config"
 	"github.com/ncodes/nomad/client/driver/executor"
 	dstructs "github.com/ncodes/nomad/client/driver/structs"
@@ -177,7 +176,7 @@ func (d *RawExecDriver) Start(ctx *ExecContext, task *structs.Task) (DriverHandl
 }
 
 func (d *RawExecDriver) Cleanup(execCtx *ExecContext, cr *CreatedResources) error {
-	return stopContainer(d.logger, d.taskEnv.Env["CONTAINER_ID"])
+	return nil
 }
 
 type rawExecId struct {
@@ -283,27 +282,6 @@ func (h *rawExecHandle) Kill() error {
 
 		return nil
 	}
-}
-
-// Delete any docker image with a matching id as the `CONTAINER_ID` in the TaskEnv
-func stopContainer(l *log.Logger, containerID string) error {
-	if containerID == "" {
-		return fmt.Errorf("Container id is required")
-	}
-
-	l.Printf("[DEBUG] driver.raw_exec: Attempting to stop associated container")
-
-	err := tools.DeleteContainer(containerID, false, false, false)
-	if err != nil {
-		if err == tools.ErrContainerNotFound {
-			l.Printf("[DEBUG] driver.raw_exec: Container does not exists")
-			return nil
-		}
-		return fmt.Errorf("failed to delete container attached to task")
-	}
-
-	l.Printf("[DEBUG] driver.raw_exec: Successfully stopped container")
-	return nil
 }
 
 func (h *rawExecHandle) Stats() (*cstructs.TaskResourceUsage, error) {
