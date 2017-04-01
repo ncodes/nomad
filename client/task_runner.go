@@ -1038,6 +1038,7 @@ func (r *TaskRunner) run() {
 				break WAIT
 
 			case <-r.destroyCh:
+
 				r.runningLock.Lock()
 				running := r.running
 				r.runningLock.Unlock()
@@ -1090,6 +1091,7 @@ func (r *TaskRunner) run() {
 
 // cleanup calls Driver.Cleanup when a task is stopping. Errors are logged.
 func (r *TaskRunner) cleanup() {
+
 	drv, err := r.createDriver()
 	if err != nil {
 		r.logger.Printf("[ERR] client: error creating driver to cleanup resources: %v", err)
@@ -1119,6 +1121,11 @@ func (r *TaskRunner) cleanup() {
 	if cleanupErr != nil {
 		r.logger.Printf("[ERR] client: error cleaning up resources for task %q after %d attempts: %v", r.task.Name, attempts, cleanupErr)
 	}
+
+	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
+		r.logger.Printf("[DEBUG] %s", err.Error())
+	}
+
 	return
 }
 
@@ -1199,6 +1206,10 @@ func (r *TaskRunner) killTask(killingEvent *structs.TaskEvent) {
 	if !destroySuccess {
 		// We couldn't successfully destroy the resource created.
 		r.logger.Printf("[ERR] client: failed to kill task %q. Resources may have been leaked: %v", r.task.Name, err)
+	}
+
+	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
+		r.logger.Printf("[DEBUG] %s", err.Error())
 	}
 
 	r.runningLock.Lock()
