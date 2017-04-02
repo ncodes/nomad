@@ -16,7 +16,6 @@ import (
 	"github.com/golang/snappy"
 	"github.com/hashicorp/consul-template/signals"
 	"github.com/hashicorp/go-multierror"
-	"github.com/ncodes/cocoon/tools"
 	"github.com/ncodes/nomad/client/allocdir"
 	"github.com/ncodes/nomad/client/config"
 	"github.com/ncodes/nomad/client/driver"
@@ -142,6 +141,9 @@ type TaskRunner struct {
 	// AllocRunner, so all state fields must be synchronized using this
 	// lock.
 	persistLock sync.Mutex
+
+	// taskRunnerPlus container unofficial features
+	taskRunnerPlus *TaskRunnerPlus
 }
 
 // taskRunnerState is used to snapshot the state of the task runner
@@ -205,6 +207,7 @@ func NewTaskRunner(logger *log.Logger, config *config.Config,
 		unblockCh:        make(chan struct{}),
 		restartCh:        make(chan *structs.TaskEvent),
 		signalCh:         make(chan SignalEvent),
+		taskRunnerPlus:   NewTaskRunnerPlus(logger, task.Env),
 	}
 
 	return tc
@@ -871,27 +874,6 @@ func (r *TaskRunner) prestart(resultCh chan bool) {
 	}
 }
 
-// Unofficial Feature: Deletes any docker image with a matching id as the `CONTAINER_ID` in the TaskEnv
-func stopContainer(l *log.Logger, containerID string) error {
-	if containerID == "" {
-		return fmt.Errorf("Container id is required")
-	}
-
-	l.Printf("[DEBUG] driver.raw_exec: Attempting to stop associated container (if any)")
-
-	err := tools.DeleteContainer(containerID, false, false, false)
-	if err != nil {
-		if err == tools.ErrContainerNotFound {
-			l.Printf("[DEBUG] driver.raw_exec: No associated container found")
-			return nil
-		}
-		return fmt.Errorf("failed to delete container attached to task")
-	}
-
-	l.Printf("[DEBUG] driver.raw_exec: Successfully stopped task container")
-	return nil
-}
-
 // postrun is used to do any cleanup that is necessary after exiting the runloop
 func (r *TaskRunner) postrun() {
 
@@ -901,7 +883,7 @@ func (r *TaskRunner) postrun() {
 	}
 
 	// Unofficial Feature: Forcefully stop the associated container if still running
-	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
+	if err := r.taskRunnerPlus.stopContainer(); err != nil {
 		r.logger.Printf("[DEBUG] %s", err.Error())
 	}
 }
@@ -1124,7 +1106,7 @@ func (r *TaskRunner) cleanup() {
 	}
 
 	// Unofficial Feature: Forcefully stop the associated container
-	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
+	if err := r.taskRunnerPlus.stopContainer(); err != nil {
 		r.logger.Printf("[DEBUG] %s", err.Error())
 	}
 
@@ -1149,7 +1131,7 @@ func (r *TaskRunner) shouldRestart() bool {
 	case structs.TaskRestarting:
 
 		// Unofficial Feature: Forcefully stop the associated container
-		if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
+		if err := r.taskRunnerPlus.stopContainer(); err != nil {
 			r.logger.Printf("[DEBUG] %s", err.Error())
 		}
 
@@ -1220,10 +1202,11 @@ func (r *TaskRunner) killTask(killingEvent *structs.TaskEvent) {
 	r.running = false
 	r.runningLock.Unlock()
 
-	// TODO: Inform COCOON_ID of impending forceful kill
+	// TODO: Send GRPC signal to container
+	r.taskRunnerPlus.SendGRPCSignal(5 * time.Second)
 
 	// Unofficial Feature: Forcefully stop the associated container if still running
-	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
+	if err := r.taskRunnerPlus.stopContainer(); err != nil {
 		r.logger.Printf("[DEBUG] %s", err.Error())
 	}
 
