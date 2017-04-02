@@ -1228,8 +1228,8 @@ func (r *TaskRunner) startTask() error {
 
 	// Since raw exec driver has no allocation,
 	// we introduce a memory check before task is started.
-	pretty.Println(drv)
 	if r.task.Driver == "raw_exec" {
+		pretty.Println(drv)
 		expectedMemStr := r.getTaskEnv().Env[r.taskRunnerPlus.MemoryAllocEnvKey]
 		if len(expectedMemStr) > 0 {
 			expectedMem, _ := strconv.Atoi(expectedMemStr)
@@ -1237,7 +1237,9 @@ func (r *TaskRunner) startTask() error {
 				r.killTask(nil)
 				return fmt.Errorf("client: insufficient memory for raw_exec task. Task will be killed")
 			})
-			return err
+			if err != nil {
+				return err
+			}
 		}
 	}
 
