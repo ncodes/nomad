@@ -871,24 +871,24 @@ func (r *TaskRunner) prestart(resultCh chan bool) {
 	}
 }
 
-// Delete any docker image with a matching id as the `CONTAINER_ID` in the TaskEnv
+// Unofficial Feature: Deletes any docker image with a matching id as the `CONTAINER_ID` in the TaskEnv
 func stopContainer(l *log.Logger, containerID string) error {
 	if containerID == "" {
 		return fmt.Errorf("Container id is required")
 	}
 
-	l.Printf("[DEBUG] driver.raw_exec: Attempting to stop associated container")
+	l.Printf("[DEBUG] driver.raw_exec: Attempting to stop associated container (if any)")
 
 	err := tools.DeleteContainer(containerID, false, false, false)
 	if err != nil {
 		if err == tools.ErrContainerNotFound {
-			l.Printf("[DEBUG] driver.raw_exec: Container does not exists")
+			l.Printf("[DEBUG] driver.raw_exec: No associated container found")
 			return nil
 		}
 		return fmt.Errorf("failed to delete container attached to task")
 	}
 
-	l.Printf("[DEBUG] driver.raw_exec: Successfully stopped container")
+	l.Printf("[DEBUG] driver.raw_exec: Successfully stopped task container")
 	return nil
 }
 
@@ -900,7 +900,7 @@ func (r *TaskRunner) postrun() {
 		r.templateManager.Stop()
 	}
 
-	r.logger.Println("[DEBUG] A")
+	// Unofficial Feature: Forcefully stop the associated container if still running
 	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
 		r.logger.Printf("[DEBUG] %s", err.Error())
 	}
@@ -1123,7 +1123,7 @@ func (r *TaskRunner) cleanup() {
 		r.logger.Printf("[ERR] client: error cleaning up resources for task %q after %d attempts: %v", r.task.Name, attempts, cleanupErr)
 	}
 
-	r.logger.Println("[DEBUG] B")
+	// Unofficial Feature: Forcefully stop the associated container
 	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
 		r.logger.Printf("[DEBUG] %s", err.Error())
 	}
@@ -1208,11 +1208,6 @@ func (r *TaskRunner) killTask(killingEvent *structs.TaskEvent) {
 	if !destroySuccess {
 		// We couldn't successfully destroy the resource created.
 		r.logger.Printf("[ERR] client: failed to kill task %q. Resources may have been leaked: %v", r.task.Name, err)
-	}
-
-	r.logger.Println("[DEBUG] C")
-	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
-		r.logger.Printf("[DEBUG] %s", err.Error())
 	}
 
 	r.runningLock.Lock()
