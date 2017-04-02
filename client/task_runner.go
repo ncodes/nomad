@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"sync"
 	"time"
@@ -1222,6 +1223,23 @@ func (r *TaskRunner) startTask() error {
 	if err != nil {
 		return fmt.Errorf("failed to create driver of task %q for alloc %q: %v",
 			r.task.Name, r.alloc.ID, err)
+	}
+
+	// Since raw exec driver has no allocation,
+	// we introduce a memory check before task is started.
+	if _, ok := drv.(*driver.RawExecDriver); ok {
+		expectedMemStr := r.getTaskEnv().Env[r.taskRunnerPlus.MemoryAllocEnvKey]
+
+		// if set, perform check
+		if len(expectedMemStr) > 0 {
+			expectedMem, _ := strconv.Atoi(expectedMemStr)
+			err := r.taskRunnerPlus.KillOnLowMemory(expectedMem, func() error {
+				r.logger.Printf("[DEBUG] client: insufficient memory for raw_exec task. Task will be killed")
+				r.killTask(nil)
+				return nil
+			})
+			return err
+		}
 	}
 
 	// Run prestart

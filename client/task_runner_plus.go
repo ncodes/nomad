@@ -3,7 +3,10 @@ package client
 import (
 	"fmt"
 	"log"
+	"strconv"
 	"time"
+
+	"os/exec"
 
 	"github.com/ncodes/cocoon/tools"
 )
@@ -12,17 +15,19 @@ import (
 // Functionalities include the ability to stop and remove a docker container
 // identified by an id specified in the task environment.
 type TaskRunnerPlus struct {
-	ContainerEnvKey string
-	taskEnv         map[string]string
-	l               *log.Logger
+	ContainerEnvKey   string
+	MemoryAllocEnvKey string
+	taskEnv           map[string]string
+	l                 *log.Logger
 }
 
 // NewTaskRunnerPlus creates a new task runner
 func NewTaskRunnerPlus(logger *log.Logger, taskEnv map[string]string) *TaskRunnerPlus {
 	return &TaskRunnerPlus{
-		ContainerEnvKey: "CONTAINER_ID",
-		taskEnv:         taskEnv,
-		l:               logger,
+		ContainerEnvKey:   "CONTAINER_ID",
+		MemoryAllocEnvKey: "COCOON_ALLOC_MEMORY",
+		taskEnv:           taskEnv,
+		l:                 logger,
 	}
 }
 
@@ -54,4 +59,18 @@ func (r *TaskRunnerPlus) stopContainer() error {
 // period it returns with no error
 func (r *TaskRunnerPlus) SendGRPCSignal(timeout time.Duration) error {
 	return nil // not implemented
+}
+
+// KillOnLowMemory will kill a task if an expected amount
+// of memory is unavailable.
+func (r *TaskRunnerPlus) KillOnLowMemory(expectedMemMB int, kill func() error) error {
+	memStr, err := exec.Command("bash", "-c", "free -m | grep Mem | awk '{print $4}'").Output()
+	if err != nil {
+		return fmt.Errorf("failed to check available memory. %s", err)
+	}
+	mem, _ := strconv.Atoi(string(memStr))
+	if expectedMemMB < mem {
+		return kill()
+	}
+	return nil
 }
