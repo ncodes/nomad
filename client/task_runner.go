@@ -900,6 +900,7 @@ func (r *TaskRunner) postrun() {
 		r.templateManager.Stop()
 	}
 
+	r.logger.Println("[DEBUG] A")
 	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
 		r.logger.Printf("[DEBUG] %s", err.Error())
 	}
@@ -1122,6 +1123,7 @@ func (r *TaskRunner) cleanup() {
 		r.logger.Printf("[ERR] client: error cleaning up resources for task %q after %d attempts: %v", r.task.Name, attempts, cleanupErr)
 	}
 
+	r.logger.Println("[DEBUG] B")
 	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
 		r.logger.Printf("[DEBUG] %s", err.Error())
 	}
@@ -1208,6 +1210,7 @@ func (r *TaskRunner) killTask(killingEvent *structs.TaskEvent) {
 		r.logger.Printf("[ERR] client: failed to kill task %q. Resources may have been leaked: %v", r.task.Name, err)
 	}
 
+	r.logger.Println("[DEBUG] C")
 	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
 		r.logger.Printf("[DEBUG] %s", err.Error())
 	}
