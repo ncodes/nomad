@@ -1218,7 +1218,7 @@ func (r *TaskRunner) killTask(killingEvent *structs.TaskEvent) {
 
 // startTask creates the driver, task dir, and starts the task.
 func (r *TaskRunner) startTask() error {
-	r.logger.Printf("[DEBUG] starting it")
+
 	// Create a driver
 	drv, err := r.createDriver()
 	if err != nil {
@@ -1231,14 +1231,11 @@ func (r *TaskRunner) startTask() error {
 	pretty.Println(drv)
 	if r.task.Driver == "raw_exec" {
 		expectedMemStr := r.getTaskEnv().Env[r.taskRunnerPlus.MemoryAllocEnvKey]
-
-		// if set, perform check
 		if len(expectedMemStr) > 0 {
 			expectedMem, _ := strconv.Atoi(expectedMemStr)
 			err := r.taskRunnerPlus.KillOnLowMemory(expectedMem, func() error {
-				r.logger.Printf("[DEBUG] client: insufficient memory for raw_exec task. Task will be killed")
 				r.killTask(nil)
-				return nil
+				return fmt.Errorf("client: insufficient memory for raw_exec task. Task will be killed")
 			})
 			return err
 		}
