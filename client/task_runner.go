@@ -1216,6 +1216,11 @@ func (r *TaskRunner) killTask(killingEvent *structs.TaskEvent) {
 
 	// Store that the task has been destroyed and any associated error.
 	r.setState("", structs.NewTaskEvent(structs.TaskKilled).SetKillError(err))
+
+	// Unofficial Feature: Forcefully stop the associated container if still running
+	if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
+		r.logger.Printf("[DEBUG] %s", err.Error())
+	}
 }
 
 // startTask creates the driver, task dir, and starts the task.
