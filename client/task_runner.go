@@ -1147,6 +1147,12 @@ func (r *TaskRunner) shouldRestart() bool {
 		}
 		return false
 	case structs.TaskRestarting:
+
+		// Unofficial Feature: Forcefully stop the associated container
+		if err := stopContainer(r.logger, r.taskEnv.Env["CONTAINER_ID"]); err != nil {
+			r.logger.Printf("[DEBUG] %s", err.Error())
+		}
+
 		r.logger.Printf("[INFO] client: Restarting task %q for alloc %q in %v", r.task.Name, r.alloc.ID, when)
 		r.setState(structs.TaskStatePending,
 			structs.NewTaskEvent(structs.TaskRestarting).
