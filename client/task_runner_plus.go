@@ -70,7 +70,7 @@ func (r *TaskRunnerPlus) KillOnLowMemory(expectedMemMB int, kill func() error) e
 	}
 	memStr = []byte("100")
 	mem, _ := strconv.Atoi(string(memStr))
-	if expectedMemMB < mem {
+	if mem < expectedMemMB {
 		return kill()
 	}
 	return nil
