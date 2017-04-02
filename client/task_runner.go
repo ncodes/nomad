@@ -17,7 +17,6 @@ import (
 	"github.com/golang/snappy"
 	"github.com/hashicorp/consul-template/signals"
 	"github.com/hashicorp/go-multierror"
-	"github.com/kr/pretty"
 	"github.com/ncodes/nomad/client/allocdir"
 	"github.com/ncodes/nomad/client/config"
 	"github.com/ncodes/nomad/client/driver"
@@ -1228,14 +1227,16 @@ func (r *TaskRunner) startTask() error {
 
 	// Since raw exec driver has no allocation,
 	// we introduce a memory check before task is started.
+	// Fires a SetupFailure event if memory requirement is not met.
 	if r.task.Driver == "raw_exec" {
-		pretty.Println(drv)
 		expectedMemStr := r.getTaskEnv().Env[r.taskRunnerPlus.MemoryAllocEnvKey]
 		if len(expectedMemStr) > 0 {
 			expectedMem, _ := strconv.Atoi(expectedMemStr)
 			err := r.taskRunnerPlus.KillOnLowMemory(expectedMem, func() error {
-				r.killTask(nil)
-				return fmt.Errorf("client: insufficient memory for raw_exec task. Task will be killed")
+				wrapped := fmt.Errorf("insufficient memory")
+				r.killTask(structs.NewTaskEvent(structs.TaskSetupFailure).SetSetupError(wrapped))
+				r.logger.Printf("[DEBUG] client: insufficient memory for raw_exec task. Task will be killed")
+				return wrapped
 			})
 			if err != nil {
 				return err
