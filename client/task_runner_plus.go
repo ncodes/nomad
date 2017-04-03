@@ -68,7 +68,6 @@ func (r *TaskRunnerPlus) KillOnLowMemory(expectedMemMB int, kill func() error) e
 	if err != nil {
 		return fmt.Errorf("failed to check available memory. %s", err)
 	}
-	memStr = []byte("100")
 	mem, _ := strconv.Atoi(string(memStr))
 	if mem < expectedMemMB {
 		return kill()
