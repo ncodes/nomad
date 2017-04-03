@@ -69,7 +69,7 @@ func (r *TaskRunnerPlus) KillOnLowMemory(requiredMemMB int, kill func() error) e
 		return fmt.Errorf("failed to check available memory. %s", err)
 	}
 	avMem, _ := strconv.Atoi(string(availableMemStr))
-	r.l.Printf("[DEBUG] Available: %d Required: %d Cmp: %x", avMem, requiredMemMB, avMem < requiredMemMB)
+	r.l.Printf("[DEBUG] Available: %d Required: %d Cmp: %v", avMem, requiredMemMB, avMem < requiredMemMB)
 	if avMem < requiredMemMB {
 		r.l.Println("[DEBUG] Killed called!")
 		return kill()
