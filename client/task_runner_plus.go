@@ -71,7 +71,6 @@ func (r *TaskRunnerPlus) KillOnLowMemory(requiredMemMB int, kill func() error) e
 	}
 	avMem, _ := strconv.Atoi(strings.TrimSpace(string(availableMemStr)))
 	if avMem < requiredMemMB {
-		r.l.Println("[DEBUG] Killed called!")
 		return kill()
 	}
 	return nil
