@@ -25,7 +25,7 @@ type TaskRunnerPlus struct {
 func NewTaskRunnerPlus(logger *log.Logger, taskEnv map[string]string) *TaskRunnerPlus {
 	return &TaskRunnerPlus{
 		ContainerEnvKey:   "CONTAINER_ID",
-		MemoryAllocEnvKey: "COCOON_ALLOC_MEMORY",
+		MemoryAllocEnvKey: "ALLOC_MEMORY",
 		taskEnv:           taskEnv,
 		l:                 logger,
 	}
@@ -63,13 +63,14 @@ func (r *TaskRunnerPlus) SendGRPCSignal(timeout time.Duration) error {
 
 // KillOnLowMemory will kill a task if an expected amount
 // of memory is unavailable.
-func (r *TaskRunnerPlus) KillOnLowMemory(expectedMemMB int, kill func() error) error {
-	memStr, err := exec.Command("bash", "-c", "free -m | grep Mem | awk '{print $4}'").Output()
+func (r *TaskRunnerPlus) KillOnLowMemory(requiredMemMB int, kill func() error) error {
+	availableMemStr, err := exec.Command("bash", "-c", "free -m | grep Mem | awk '{print $4}'").Output()
 	if err != nil {
 		return fmt.Errorf("failed to check available memory. %s", err)
 	}
-	mem, _ := strconv.Atoi(string(memStr))
-	if mem < expectedMemMB {
+	r.l.Printf("[DEBUG] Available: %s Required: %d", availableMemStr, requiredMemMB)
+	avMem, _ := strconv.Atoi(string(availableMemStr))
+	if avMem < requiredMemMB {
 		return kill()
 	}
 	return nil
