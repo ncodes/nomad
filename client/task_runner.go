@@ -1225,8 +1225,8 @@ func (r *TaskRunner) startTask() error {
 			r.task.Name, r.alloc.ID, err)
 	}
 
-	// Since raw exec driver has no allocation,
-	// we introduce a memory check before task is started.
+	// Since raw exec driver has no resource allocation support,
+	// we introduce a memory availability check before task is started.
 	// Fires a SetupFailure event if memory requirement is not met.
 	if r.task.Driver == "raw_exec" {
 		expectedMemStr := r.getTaskEnv().Env[r.taskRunnerPlus.MemoryAllocEnvKey]
