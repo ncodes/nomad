@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"strconv"
+	"strings"
 	"time"
 
 	"os/exec"
@@ -68,7 +69,7 @@ func (r *TaskRunnerPlus) KillOnLowMemory(requiredMemMB int, kill func() error) e
 	if err != nil {
 		return fmt.Errorf("failed to check available memory. %s", err)
 	}
-	avMem, _ := strconv.Atoi(string(availableMemStr))
+	avMem, _ := strconv.Atoi(strings.TrimSpace(string(availableMemStr)))
 	r.l.Printf("[DEBUG] Available: %d/%s Required: %d Cmp: %v", avMem, availableMemStr, requiredMemMB, avMem < requiredMemMB)
 	if avMem < requiredMemMB {
 		r.l.Println("[DEBUG] Killed called!")
